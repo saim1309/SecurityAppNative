@@ -13,8 +13,7 @@ import AdminHome from './components/Home/AdminHome.js';
 import RegisterUser from './components/Admin/RegisterUser';
 import ViewReports from './components/Admin/ViewReports';
 import Schedule from './components/Admin/Schedule';
-// import UpdateUser from './components/Admin/UpdateUser'
-// import Schedule from './components/Schedule'
+import UpdateUser from './components/Admin/UpdateUser'
 
 const Stack = createStackNavigator();
 function App() {
@@ -36,6 +35,8 @@ function App() {
         <Stack.Screen name="RegisterUser" options={{ title: 'Register a Guard'}} component={RegisterUser}/>
         <Stack.Screen name="ViewReports" options={{ title: 'View Reports'}} component={ViewReports}/>
         <Stack.Screen name="Schedule" options={{ title: 'Schedule Page'}} component={Schedule}/>
+        <Stack.Screen name="UpdateUser" options={{ title: 'Update Guard Record'}} component={UpdateUser}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );  
