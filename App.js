@@ -14,7 +14,7 @@ import RegisterUser from './components/Admin/RegisterUser';
 import ViewReports from './components/Admin/ViewReports';
 import Schedule from './components/Admin/Schedule';
 // import UpdateUser from './components/Admin/UpdateUser'
-// import Schedule from './components/Schedule'
+import GuardSchedule from './components/Guard/GuardSchedule'
 
 const Stack = createStackNavigator();
 function App() {
@@ -37,6 +37,8 @@ function App() {
         <Stack.Screen name="ViewReports" options={{ title: 'View Reports'}} component={ViewReports}/>
         <Stack.Screen name="Schedule" options={{ title: 'Schedule Page'}} component={Schedule}/>
         <Stack.Screen name="ClockInOut" options={{ title: 'Enter Your Time'}} component={ClockInOut} />
+        <Stack.Screen name="GuardSchedule" options={{ title: ' Guard Schedule'}} component={GuardSchedule}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );  
