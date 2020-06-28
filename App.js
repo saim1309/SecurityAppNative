@@ -10,7 +10,7 @@ import Login from './components/Login/Login';
 // import Panic from './components/Panic';
 // import Flash from './components/Flash';
 import AdminHome from './components/Home/AdminHome.js';
-// import RegisterUser from './components/RegisterUser';
+import RegisterUser from './components/Admin/RegisterUser';
 // import ViewReports from './components/ViewReports';
 // import ViewSchedule from './components/ViewSchedule';
 // import UpdateUser from './components/UpdateUser'
@@ -33,7 +33,7 @@ function App() {
         <Stack.Screen name="Login" options={{headerShown:false}} component={Login} />
         <Stack.Screen name="Home" options={{headerShown:false}} component={Home} />
         <Stack.Screen name="AdminHome" options={{headerShown:false}} component={AdminHome} />
-        
+        <Stack.Screen name="RegisterUser" options={{ title: 'Register a Guard'}} component={RegisterUser}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

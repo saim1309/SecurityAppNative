@@ -41,7 +41,7 @@ import {Button} from 'native-base';
 
 
     UserLogout=async()=>{
-        await fetch("http://192.168.137.1:1234/users/logout", {
+        await fetch("http://192.168.0.16:1234/users/logout", {
              method: "DELETE"
            }) 
            .then((response) => response.text())

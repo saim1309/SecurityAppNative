@@ -14,7 +14,7 @@ export default class AdminHome extends Component {
     }
 
     UserLogout=async()=>{
-        await fetch("http://192.168.137.1:1234/users/logout", {
+        await fetch("http://192.168.0.16:1234/users/logout", {
              method: "DELETE"
            }) 
            .then((response) => response.text())
@@ -38,7 +38,7 @@ export default class AdminHome extends Component {
                 <View style={styles.gridContainer}>
                     <View style={styles.rowContainer}>
                         <View style={styles.CenterItem}>
-                            <TouchableOpacity /*onPress={() => { this.props.navigation.navigate('RegisterUser', { username: user_name, age: 16 }) }}*/>
+                            <TouchableOpacity onPress={() => { this.props.navigation.navigate('RegisterUser', { username: user_name, age: 16 }) }}>
                                 <Image
                                     style={styles.image}
                                     source={require('../../assets/registerUser.png')}
