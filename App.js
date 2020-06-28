@@ -6,8 +6,8 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 // import CreateSchedule from './components/CreateSchedule';
 import ClockInOut from './components/Guard/ClockInOut';
-// import Reports from './components/Reports'
-// import Panic from './components/Panic';
+import WriteReport from './components/Guard/WriteReport'
+import Panic from './components/Guard/Panic';
 // import Flash from './components/Flash';
 import AdminHome from './components/Home/AdminHome.js';
 import RegisterUser from './components/Admin/RegisterUser';
@@ -38,6 +38,8 @@ function App() {
         <Stack.Screen name="Schedule" options={{ title: 'Schedule Page'}} component={Schedule}/>
         <Stack.Screen name="ClockInOut" options={{ title: 'Enter Your Time'}} component={ClockInOut} />
         <Stack.Screen name="GuardSchedule" options={{ title: ' Guard Schedule'}} component={GuardSchedule}/>
+        <Stack.Screen name="Panic" component={Panic} />
+        <Stack.Screen name="WriteReport" component={WriteReport} />
 
       </Stack.Navigator>
     </NavigationContainer>

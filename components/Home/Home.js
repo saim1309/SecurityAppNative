@@ -102,7 +102,7 @@ import {Button} from 'native-base';
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
-                            <TouchableOpacity onPress={() => { this.props.navigation.navigate('Reports', { username: user_name }) }}>
+                            <TouchableOpacity onPress={() => { this.props.navigation.navigate('WriteReport', { username: user_name }) }}>
                                 <Image
                                     style={styles.image}
                                     source={require('../../assets/reports.png')}
