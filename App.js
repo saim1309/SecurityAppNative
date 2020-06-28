@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
-// import CreateSchedule from './components/CreateSchedule';
+import CreateSchedule from './components/Admin/CreateSchedule';
 import ClockInOut from './components/Guard/ClockInOut';
 import WriteReport from './components/Guard/WriteReport'
 import Panic from './components/Guard/Panic';
@@ -40,6 +40,7 @@ function App() {
         <Stack.Screen name="GuardSchedule" options={{ title: ' Guard Schedule'}} component={GuardSchedule}/>
         <Stack.Screen name="Panic" component={Panic} />
         <Stack.Screen name="WriteReport" component={WriteReport} />
+        <Stack.Screen name="CreateSchedule" component={CreateSchedule} />
 
       </Stack.Navigator>
     </NavigationContainer>
