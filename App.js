@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 // import CreateSchedule from './components/CreateSchedule';
-// import ClockInOut from './components/ClockInOut';
+import ClockInOut from './components/Guard/ClockInOut';
 // import Reports from './components/Reports'
 // import Panic from './components/Panic';
 // import Flash from './components/Flash';
@@ -36,6 +36,7 @@ function App() {
         <Stack.Screen name="RegisterUser" options={{ title: 'Register a Guard'}} component={RegisterUser}/>
         <Stack.Screen name="ViewReports" options={{ title: 'View Reports'}} component={ViewReports}/>
         <Stack.Screen name="Schedule" options={{ title: 'Schedule Page'}} component={Schedule}/>
+        <Stack.Screen name="ClockInOut" options={{ title: 'Enter Your Time'}} component={ClockInOut} />
       </Stack.Navigator>
     </NavigationContainer>
   );  
