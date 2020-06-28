@@ -1,4 +1,3 @@
-//import Torch from 'react-native-torch';
 import React, { Component } from 'react';
 import {View, Text, Tab, Navigator, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import {Button} from 'native-base';
@@ -37,7 +36,7 @@ export default class AdminHome extends Component {
                 {<Text style={styles.welcome}>Welcome {user_name}</Text>}
                 <View style={styles.gridContainer}>
                     <View style={styles.rowContainer}>
-                        <View style={styles.CenterItem}>
+                        <View style={styles.LeftItem}>
                             <TouchableOpacity onPress={() => { this.props.navigation.navigate('RegisterUser', { username: user_name, age: 16 }) }}>
                                 <Image
                                     style={styles.image}
@@ -46,11 +45,21 @@ export default class AdminHome extends Component {
                                 <Text style={styles.iconTitle}>Register Guard</Text>
                             </TouchableOpacity>
                         </View>
+                        <View style={styles.RightItem}>
+                            <TouchableOpacity onPress={() => {this.props.navigation.navigate("UpdateUser")}}>
+                                <Image
+                                    style={styles.image}
+                                    source={require('../../assets/updateRecords1.jpg')}
+                                    resizeMode= "stretch"
+                                />
+                                <Text style={styles.iconTitle}>Update Records</Text>
+                            </TouchableOpacity>
+                        </View>
 
                     </View>
                     <View style={styles.rowContainer}>
                         <View style={styles.LeftItem}>
-                            <TouchableOpacity /*onPress={() => { this.props.navigation.navigate('Schedule') }}*/>
+                            <TouchableOpacity onPress={() => { this.props.navigation.navigate('Schedule') }}>
                                 <Image
                                     style={styles.image}
                                     source={require('../../assets/createSchedule.jpg')}
@@ -59,12 +68,12 @@ export default class AdminHome extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
-                            <TouchableOpacity /*onPress={() => {this.props.navigation.navigate("ViewReports")}}*/>
+                            <TouchableOpacity onPress={() => {this.props.navigation.navigate("ViewReports")}}>
                                 <Image
                                     style={styles.image}
                                     source={require('../../assets/viewReports.png')}
                                 />
-                                <Text style={styles.iconTitle}>Security Records</Text>
+                                <Text style={styles.iconTitle}>View Reports</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -123,13 +132,6 @@ const styles = StyleSheet.create({
     },
     LeftItem:{
         marginLeft:0,
-    },
-    CenterItem:{
-        alignSelf:"center",
-        justifyContent:"center",
-        alignItems:"center",
-        marginLeft: 100
-
     },
     RightItem:{
         marginLeft:40,
