@@ -72,7 +72,7 @@ import {Button} from 'native-base';
                                     style={styles.image}
                                     source={require('../../assets/timeClock.png')}
                                 />
-                                <Text style={styles.iconTitle}>Clock-In/Out</Text>
+                                <Text style={styles.iconTitle}>Time Clock</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>

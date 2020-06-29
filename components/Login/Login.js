@@ -24,6 +24,7 @@ export default class Login extends Component {
             user:{},
             userAuthenticated:false,
             isLoading:true,
+            errorMessage:"Wrong email or password"
 
         };
     }
@@ -55,6 +56,7 @@ export default class Login extends Component {
            })
            .catch(error => {
                console.log("Caught Error: ",error);
+               this.setState({errorMessage: error})
                this.setState({isLoading:false})
         })
     }
@@ -82,7 +84,7 @@ export default class Login extends Component {
                 return true
             }
             else{
-                alert("Wrong email or password")
+                alert(this.state.errorMessage)
                 return false
             }
         }
