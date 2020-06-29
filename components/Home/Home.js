@@ -8,7 +8,6 @@ import {Button} from 'native-base';
  //import Panic from './Panic'
 
  export default class Home extends Component { 
-     
     constructor(props) {
         super(props);
         this.state = {
@@ -25,7 +24,6 @@ import {Button} from 'native-base';
             return true;
         });
     }
-
     componentDidAppear(){
         console.log("In component did appear")
         this.backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
@@ -33,13 +31,10 @@ import {Button} from 'native-base';
             return true;
         });
     }
-
     componentWillUnmount() {
         console.log("Home unmount")
         this.backHandler.remove();
     }
-
-
     UserLogout=async()=>{
         await fetch("http://192.168.0.16:1234/users/logout", {
              method: "DELETE"
@@ -52,7 +47,6 @@ import {Button} from 'native-base';
            .catch(error => console.log("Error : ",error))
            this.props.navigation.navigate('Login')
     }
-
     navigateToNextScreen=(screenName,user_name)=>{
         this.componentWillUnmount()
         this.props.navigation.navigate(screenName, { username: user_name})
@@ -82,7 +76,7 @@ import {Button} from 'native-base';
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
-                            <TouchableOpacity onPress={() => { this.props.navigation.navigate('ViewSchedule', { username: user_name}) }}>
+                            <TouchableOpacity onPress={() => { this.props.navigation.navigate('GuardSchedule', { username: user_name}) }}>
                                 <Image
                                     style={styles.image}
                                     source={require('../../assets/createSchedule.jpg')}
@@ -102,7 +96,7 @@ import {Button} from 'native-base';
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
-                            <TouchableOpacity onPress={() => { this.props.navigation.navigate('Reports', { username: user_name }) }}>
+                            <TouchableOpacity onPress={() => { this.props.navigation.navigate('WriteReport', { username: user_name }) }}>
                                 <Image
                                     style={styles.image}
                                     source={require('../../assets/reports.png')}

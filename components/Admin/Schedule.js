@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
-
+import CreateSchedule from './CreateSchedule' 
 
 export default class Schedule extends React.Component {
     render(){
       return (
         <View style={styles.container}>
-          <TouchableOpacity style = {styles.Button} /*onPress={() => { this.props.navigation.navigate('CreateSchedule') }}*/>
+          <TouchableOpacity style = {styles.Button} onPress={() => {this.props.navigation.navigate('CreateSchedule')}}>
             <Text style={styles.text}>Create Schedule</Text>
           </TouchableOpacity>
           <TouchableOpacity style = {styles.Button}>
