@@ -6,6 +6,7 @@ import logo from '../../assets/logo1.png'
 //import Home from './Home.js';
 
 const {width:Width} = Dimensions.get('window')
+global.hostUrl="http://192.168.0.16:1234"
 
 export default class Login extends Component {
     static navigationOptions={
@@ -33,7 +34,7 @@ export default class Login extends Component {
     }
       userAuthentication=async(username,password)=>{
             console.log('*************in userAuthentication fn***********************')
-            await fetch("http://192.168.0.16:1234/users/login", {
+            await fetch(hostUrl+"/users/login", {
              method: "POST",
              headers: {
                'Accept': 'application/json',
