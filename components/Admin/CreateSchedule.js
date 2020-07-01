@@ -15,7 +15,27 @@ export default class CreateSchedule extends React.Component {
       selectedGuardName: '',
       selectedSiteName: '',
       selectedShiftTiming: '',
+      siteNames:[],
     };
+  }
+  componentDidMount(){
+     fetch(global.hostUrl+"/sites/", {
+             method: "GET"
+           }) 
+           .then((response) => response.json())
+           .then((responseData) => {
+             console.log(responseData)
+             var data = responseData.map(function(item) {
+              return {
+                 value: item.site_name
+              };
+            });
+            console.log(data)
+            
+            this.setState({siteNames:data})
+             
+           })
+           .catch(error => console.log("Error : ",error))
   }
 
   scheduleClicked = () => {
@@ -56,16 +76,6 @@ export default class CreateSchedule extends React.Component {
       {value: 'Saim'},
       {
         value: 'Suhail',
-      },
-    ];
-
-    let siteNames = [
-      {
-        value: 'STC',
-      },
-      {value: 'Chartwell'},
-      {
-        value: 'Costco',
       },
     ];
 
@@ -129,7 +139,7 @@ export default class CreateSchedule extends React.Component {
             }}
             rippleCentered={true}
             inputContainerStyle={{borderBottomColor: 'transparent'}}
-            data={siteNames}
+            data={this.state.siteNames}
             valueExtractor={({value}) => value}
             onChangeText={(value) => {
               this.setState({selectedSiteName: value});
