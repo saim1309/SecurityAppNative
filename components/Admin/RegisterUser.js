@@ -40,7 +40,7 @@ export default class RegisterUser extends React.Component {
   }
 
   UserRegistration=async()=>{
-    await fetch("http://192.168.0.16:1234/users/register", {
+    await fetch(global.hostUrl+"/users/register", {
              method: "POST",
              headers: {
                'Accept': 'application/json',

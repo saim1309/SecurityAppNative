@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 import {View, Text, Tab, Navigator, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import {Button} from 'native-base';
 
-export default class AdminHome extends Component {
-    
+export default class AdminHome extends Component { 
     constructor(props) {
         super(props);
         this.state = { 
-            responseData:'',     
-           
+            responseData:'',        
         };
     }
-
     UserLogout=async()=>{
-        await fetch("http://192.168.0.16:1234/users/logout", {
+        await fetch(global.hostUrl+"/users/logout", {
              method: "DELETE"
            }) 
            .then((response) => response.text())
@@ -24,7 +21,6 @@ export default class AdminHome extends Component {
            .catch(error => console.log("Error : ",error))
            this.props.navigation.navigate('Login')
     }
-
     render() {
         const params = this.props.route.params;
         const user_name = params.username
