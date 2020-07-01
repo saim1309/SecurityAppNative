@@ -1,12 +1,13 @@
 import React,{Component} from 'react';
 import { Button, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import moment from 'moment'
 
 
 export default class ClockInOut extends Component {
 
   clockIn=()=>{
     var time = Date.now.toString('dd/MM/yyyy HH:mm:ss')
-    alert('user clocked in at '+time)
+    alert('user clocked in at '+new Date().toLocaleTimeString('HH:mm:ss'))
   }
   render(){
     // const user_name = route.params.username;

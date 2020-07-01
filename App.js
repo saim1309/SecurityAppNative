@@ -18,6 +18,7 @@ import UpdateUser from './components/Admin/UpdateUser'
 import GuardSchedule from './components/Guard/GuardSchedule'
 
 const Stack = createStackNavigator();
+console.disableYellowBox = ['Warning: Each', 'Warning: Failed'];
 function App() {
   return (
     <NavigationContainer>
