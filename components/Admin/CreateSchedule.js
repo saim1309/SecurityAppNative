@@ -39,16 +39,8 @@ export default class CreateSchedule extends React.Component {
   }
 
   scheduleClicked = () => {
+    
     alert('{this.state.selectedDate}');
-    {
-      this.state.selectedGuardName;
-    }
-    {
-      this.state.selectedSiteName;
-    }
-    {
-      this.state.selectedShiftTiming;
-    }
   };
 
   handlePicker = (date) => {
