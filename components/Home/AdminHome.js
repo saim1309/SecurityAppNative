@@ -38,7 +38,7 @@ export default class AdminHome extends Component {
                                     style={styles.image}
                                     source={require('../../assets/registerUser.png')}
                                 />
-                                <Text style={styles.iconTitle}>Register Guard</Text>
+                                <Text style={styles.iconTitle}>Register User</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
@@ -60,7 +60,7 @@ export default class AdminHome extends Component {
                                     style={styles.image}
                                     source={require('../../assets/createSchedule.jpg')}
                                 />
-                                <Text style={styles.iconTitle}>Schedules</Text>
+                                <Text style={styles.iconTitle}>Create Schedules</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
@@ -69,7 +69,7 @@ export default class AdminHome extends Component {
                                     style={styles.image}
                                     source={require('../../assets/viewReports.png')}
                                 />
-                                <Text style={styles.iconTitle}>View Reports</Text>
+                                <Text style={styles.iconTitle}>Security Records</Text>
                             </TouchableOpacity>
                         </View>
 

@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { Button, View, Text,TouchableOpacity, StyleSheet, Image,Alert,BackHandler } from 'react-native';
 import Communications from 'react-native-communications';
-import { color } from 'react-native-reanimated';
+//import { color } from 'react-native-reanimated';
 
 export default class Panic extends React.Component{
 
