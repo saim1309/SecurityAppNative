@@ -36,6 +36,24 @@ export default class CreateSchedule extends React.Component {
              
            })
            .catch(error => console.log("Error : ",error))
+
+
+           /** Fetching Guard Names */
+           fetch(global.hostUrl+"/users/", {
+            method: "GET"
+          }) 
+          .then((response) => response.json())
+          .then((responseData) => {
+            console.log(responseData)
+            var data = responseData.map(function(item) {
+             return {
+                value: item.first_name+" "+item.last_name
+             };
+           });
+           this.setState({guardNames:data})
+            
+          })
+          .catch(error => console.log("Error : ",error))
   }
 
   scheduleClicked = () => {
@@ -61,15 +79,6 @@ export default class CreateSchedule extends React.Component {
     // const params = this.props.route.params;
     // const user_name = params.username
 
-    let guardNames = [
-      {
-        value: 'Zeefa',
-      },
-      {value: 'Saim'},
-      {
-        value: 'Suhail',
-      },
-    ];
 
     let shiftTime = [
       {
@@ -107,7 +116,7 @@ export default class CreateSchedule extends React.Component {
             }}
             rippleCentered={true}
             inputContainerStyle={{borderBottomColor: 'transparent'}}
-            data={guardNames}
+            data={this.state.guardNames}
             valueExtractor={({value}) => value}
             onChangeText={(value) => {
               this.setState({selectedGuardName: value});
