@@ -6,12 +6,9 @@ import moment from 'moment'
 export default class ClockInOut extends Component {
 
   clockIn=()=>{
-    var time = Date.now.toString('dd/MM/yyyy HH:mm:ss')
     alert('user clocked in at '+new Date().toLocaleTimeString('HH:mm:ss'))
   }
   render(){
-    // const user_name = route.params.username;
-    // const age = route.params.age;
     const params = this.props.route.params;
     const user_name = params.username
     const age = params.age;
@@ -57,5 +54,3 @@ const styles = StyleSheet.create({
       paddingBottom:10
   }
 });
-
-  //export default ClockInOut
