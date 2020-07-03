@@ -10,60 +10,89 @@ export default class CreateSchedule extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedDate: 'Click to choose Date',
+      selectedDate: '',
       isVisible: false,
       selectedGuardName: '',
       selectedSiteName: '',
       selectedShiftTiming: '',
-      siteNames:[],
+      siteNames: [],
     };
   }
-  componentDidMount(){
-     fetch(global.hostUrl+"/sites/", {
-             method: "GET"
-           }) 
-           .then((response) => response.json())
-           .then((responseData) => {
-             console.log(responseData)
-             var data = responseData.map(function(item) {
-              return {
-                 value: item.site_name
-              };
-            });
-            console.log(data)
-            
-            this.setState({siteNames:data})
-             
-           })
-           .catch(error => console.log("Error : ",error))
+  componentDidMount() {
+    fetch(global.hostUrl + '/sites/', {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        //console.log(responseData)
+        var data = responseData.map(function (item) {
+          return {
+            value: item.site_name,
+          };
+        });
+        console.log(data);
 
+        this.setState({siteNames: data});
+      })
+      .catch((error) => console.log('Error : ', error));
 
-           /** Fetching Guard Names */
-           fetch(global.hostUrl+"/users/", {
-            method: "GET"
-          }) 
-          .then((response) => response.json())
-          .then((responseData) => {
-            console.log(responseData)
-            var data = responseData.map(function(item) {
-             return {
-                value: item.first_name+" "+item.last_name
-             };
-           });
-           this.setState({guardNames:data})
-            
-          })
-          .catch(error => console.log("Error : ",error))
+    /** Fetching Guard Names */
+    fetch(global.hostUrl + '/users/', {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        //console.log(responseData)
+        var data = responseData.map(function (item) {
+          return {
+            value: item.first_name + ' ' + item.last_name,
+          };
+        });
+        this.setState({guardNames: data});
+      })
+      .catch((error) => console.log('Error : ', error));
   }
 
+  fieldValidation = () => {
+    //getting today's date and converting in required format
+    var today = new Date();
+    var date = today.getDate();
+    var month = today.getMonth() + 1;
+    var year = today.getFullYear();
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (date < 10) {
+      date = '0' + date;
+    }
+
+    var currentDate = year + '-' + month + '-' + date;
+    //console.log(currentDate);
+    console.log(this.state.selectedDate);
+    console.log(this.state.selectedGuardName);
+    console.log(this.state.selectedShiftTiming);
+
+    if (
+      this.state.selectedDate == '' ||
+      this.state.selectedGuardName == '' ||
+      this.state.selectedSiteName == '' ||
+      this.state.selectedShiftTiming == ''
+    ) {
+      alert('All fields are necessary');
+    } else if (this.state.selectedDate < currentDate) {
+      alert('selected date cannot be in the past');
+    } else {
+      this.scheduleClicked.bind(this);
+    }
+  };
+
   scheduleClicked = () => {
-    
-    alert('{this.state.selectedDate}');
+    this.fieldValidation();
   };
 
   handlePicker = (date) => {
     this.setState({isVisible: false});
-    this.setState({selectedDate: moment(date).format('MM-DD-YYYY')});
+    this.setState({selectedDate: moment(date).format('YYYY-MM-DD')});
     //selectedDate: moment(date).format('MM-DD-YYYY')
   };
 
@@ -78,7 +107,6 @@ export default class CreateSchedule extends React.Component {
   render() {
     // const params = this.props.route.params;
     // const user_name = params.username
-
 
     let shiftTime = [
       {
@@ -180,7 +208,7 @@ export default class CreateSchedule extends React.Component {
           onCancel={this.hideDatePicker}
         />
 
-        <Button block info onPress={this.scheduleClicked.bind(this)}>
+        <Button block info onPress={this.fieldValidation.bind(this)}>
           <Text>SCHEDULE</Text>
         </Button>
       </View>
@@ -208,7 +236,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   datePickerButton: {
-    backgroundColor: '#EEC213',
+    backgroundColor: '#DAE0E2',
     borderRadius: 5,
     height: 30,
     width: 200,
