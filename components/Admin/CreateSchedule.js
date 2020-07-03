@@ -51,7 +51,7 @@ export default class CreateSchedule extends React.Component {
         this.setState({ guardNames: data });
       })
       .catch((error) => console.log('Error : ', error));
-  }
+  }// end of componentDidMount
 
   fieldValidation = () => {
     //getting today's date and converting in required format
@@ -82,12 +82,13 @@ export default class CreateSchedule extends React.Component {
     } else if (this.state.selectedDate < currentDate) {
       alert('selected date cannot be in the past');
     } else {
-      this.scheduleClicked.bind(this);
+      //console.log("datatype of selectedDate is:"+typeof(selectedDate));
+      //this.scheduleClicked.bind(this);
     }
   };
 
   scheduleClicked = () => {
-    this.fieldValidation();
+    
   };
 
   handlePicker = (date) => {
