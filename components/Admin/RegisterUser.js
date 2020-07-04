@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, KeyboardAvoidingView, Platform,TextInput,Activi
 import {TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-
 export default class RegisterUser extends React.Component {
 
   constructor(props) {

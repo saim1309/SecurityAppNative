@@ -16,7 +16,6 @@ export default class UpdateUser extends React.Component {
             newconfirmpassword: "",
             user: "default",
             Alert_Visibility: false
-
         }
     }
 
@@ -41,8 +40,8 @@ export default class UpdateUser extends React.Component {
     inputValidation = () => {
         console.log("Name: ", this.state.newName);
         console.log("Email: ", this.state.newEmail);
-        console.log("newpasswoprd: ", this.state.newpassword);
-        console.log("confirm passwprd: ", this.state.newconfirmpassword);
+        console.log("newpassword: ", this.state.newpassword);
+        console.log("confirm password: ", this.state.newconfirmpassword);
 
 
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -51,16 +50,16 @@ export default class UpdateUser extends React.Component {
             alert('all fields are mandatory');
         }
         else if (this.state.newpassword != this.state.newconfirmpassword) {
-            alert('both password shoould be same');
+            alert('both password should be same');
         }
         else if (reg.test(this.state.newEmail) === false) {
             alert('Email invalid');
         }
         else if (this.state.newpassword.length < 5) {
-            alert('Password length should be min 5 charecters')
+            alert('Password length should be min 5 characters')
         }
         else {
-            alert('regiter is pressed after succesful validations');
+            alert('register is pressed after successful validations');
         }
 
     }

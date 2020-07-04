@@ -16,9 +16,13 @@ export default class CreateSchedule extends React.Component {
       selectedSiteName: '',
       selectedShiftTiming: '',
       siteNames: [],
+      guardData:{},
+      selectedGuardId:'',
     };
   }
+
   componentDidMount() {
+    /**fetching site names */
     fetch(global.hostUrl + '/sites/', {
       method: 'GET',
     })
@@ -42,7 +46,8 @@ export default class CreateSchedule extends React.Component {
     })
       .then((response) => response.json())
       .then((responseData) => {
-        //console.log(responseData)
+        this.setState({guardData:responseData})
+        console.log(this.state.guardData)
         var data = responseData.map(function (item) {
           return {
             value: item.first_name + ' ' + item.last_name,
@@ -52,9 +57,9 @@ export default class CreateSchedule extends React.Component {
       })
       .catch((error) => console.log('Error : ', error));
   }
-
+/** Field validation after user clicks on schedule button */
   fieldValidation = () => {
-    //getting today's date and converting in required format
+    /**getting today's date and converting in required format**/
     var today = new Date();
     var date = today.getDate();
     var month = today.getMonth() + 1;
@@ -64,10 +69,9 @@ export default class CreateSchedule extends React.Component {
     }
     if (date < 10) {
       date = '0' + date;
-    }
+    }``
 
     var currentDate = year + '-' + month + '-' + date;
-    //console.log(currentDate);
     console.log(this.state.selectedDate);
     console.log(this.state.selectedGuardName);
     console.log(this.state.selectedShiftTiming);
@@ -83,6 +87,30 @@ export default class CreateSchedule extends React.Component {
       alert('selected date cannot be in the past');
     } else {
       this.scheduleClicked.bind(this);
+      fetch(global.hostUrl+"/shifts/create", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+           site_name:this.state.selectedSiteName,
+           date:this.state.selectedDate,
+           shift_slot:this.state.selectedShiftTiming,
+           guard_id:this.state.selectedGuardId,
+           guard_name:this.state.selectedGuardName
+        })
+      }) 
+      .then((response) => response.text())
+      .then((responseData) => {
+         console.log(responseData)
+         alert(responseData)
+      })
+      .catch(error=> {
+        console.log("Error : ",error)
+        alert(error)
+      })
+      
     }
   };
 
@@ -104,6 +132,33 @@ export default class CreateSchedule extends React.Component {
     this.setState({isVisible: false});
   };
 
+  getCorrespondingId=async(guardName)=>{
+    console.log("In corresponding ID")
+    await fetch(global.hostUrl+"/users/getId", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+         first_name:guardName.toString().split(" ")[0],
+         last_name:guardName.toString().split(" ")[1]
+      })
+    }) 
+    .then((response) => response.json())
+    .then((responseData) => {
+       console.log(responseData)
+       console.log("After setting the state")
+       var data = responseData.map(function (item) {
+        return {
+          value: item._id,
+        };
+      });
+       this.setState({guardId:data})
+    })
+    .catch(error => console.log("Error : ",error))
+  }
+
   render() {
     // const params = this.props.route.params;
     // const user_name = params.username
@@ -115,8 +170,7 @@ export default class CreateSchedule extends React.Component {
       {
         value: '9:30PM- 9:30AM',
       },
-    ];
-
+    ];  
     return (
       <View style={styles.container}>
         <View style={styles.row}>
@@ -131,8 +185,8 @@ export default class CreateSchedule extends React.Component {
           <Text style={styles.dateLabel}>Guard Name:</Text>
           <Dropdown
             //style= {styles.dropdown}
-            dropdownOffset={{top: 10, left: 50}}
-            dropdownMargins={{min: 5, max: 10}}
+            dropdownOffset={{top: 10, left: 20}}
+            dropdownMargins={{min: 5, max: 30}}
             containerStyle={{
               borderWidth: 1,
               borderColor: 'lightgrey',
@@ -147,7 +201,34 @@ export default class CreateSchedule extends React.Component {
             data={this.state.guardNames}
             valueExtractor={({value}) => value}
             onChangeText={(value) => {
-              this.setState({selectedGuardName: value});
+            this.setState({selectedGuardName: value});
+            this.guardIdDropDown.setState({ value: '' });
+            this.getCorrespondingId(this.state.selectedGuardName)
+            }}
+          />
+        </View>
+        <View>
+          <Text style={styles.dateLabel}>Guard ID:</Text>
+          <Dropdown
+            //style= {styles.dropdown}
+            dropdownOffset={{top: 10, left: 0}}
+            dropdownMargins={{min: 5, max: 30}}
+            containerStyle={{
+              borderWidth: 1,
+              borderColor: 'lightgrey',
+              borderRadius: 5,
+              width: Width * 0.8,
+              height: 50,
+              paddingRight: 10,
+              marginBottom: 20,
+            }}
+            rippleCentered={true}
+            ref={c => (this.guardIdDropDown = c)}
+            inputContainerStyle={{borderBottomColor: 'transparent'}}
+            data={this.state.guardId}
+            valueExtractor={({value}) => value}
+            onChangeText={(value) => {
+            this.setState({selectedGuardId: value});
             }}
           />
         </View>
