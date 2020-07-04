@@ -16,7 +16,7 @@ export default class ViewScheduleAdmin extends React.Component {
     getUserApi = () => {
         return (
             /** Fetching Guard Names */
-            fetch(global.hostUrl + '/shifts/', {
+            fetch(global.hostUrl + '/shifts/viewAll', {
                 method: 'GET',
             })
                 .then((response) => response.json())
@@ -83,10 +83,10 @@ export default class ViewScheduleAdmin extends React.Component {
                         <CardItem>
                             <View style={styles.userinfo}>
                                 <Text>ID: {item._id}</Text>
-                                <Text>Site ID: {item.site_name}</Text>
+                                <Text>Site Name: {item.site_name}</Text>
                                 <Text>Shift Timing: {item.shift_slot}</Text>
                                 <Text>Shift Date: {item.date}</Text>
-                                <Text>Guard Id: {item.guard_id}</Text>
+                                <Text>Guard Name: {item.guard_name}</Text>
                                 
                             </View>
                         </CardItem>
