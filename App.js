@@ -16,6 +16,7 @@ import Schedule from './components/Admin/Schedule';
 import UpdateUser from './components/Admin/UpdateUser'
 // import UpdateUser from './components/Admin/UpdateUser'
 import GuardSchedule from './components/Guard/GuardSchedule'
+import ViewScheduleAdmin from './components/Admin/ViewScheduleAdmin'
 
 const Stack = createStackNavigator();
 console.disableYellowBox = true;
@@ -38,6 +39,7 @@ function App() {
         <Stack.Screen name="RegisterUser" options={{ title: 'Register a Guard'}} component={RegisterUser}/>
         <Stack.Screen name="ViewReports" options={{ title: 'View Reports'}} component={ViewReports}/>
         <Stack.Screen name="Schedule" options={{ title: 'Schedule Page'}} component={Schedule}/>
+        <Stack.Screen name="ViewScheduleAdmin" options={{ title: 'View Schedule Page'}} component={ViewScheduleAdmin}/>
         <Stack.Screen name="UpdateUser" options={{ title: 'Update Guard Record'}} component={UpdateUser}/>
         <Stack.Screen name="ClockInOut" options={{ title: 'Enter Your Time'}} component={ClockInOut} />
         <Stack.Screen name="GuardSchedule" options={{ title: ' Guard Schedule'}} component={GuardSchedule}/>

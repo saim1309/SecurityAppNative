@@ -1,11 +1,11 @@
-import React, {Component, useState} from 'react';
-import {View, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
-import {Container, Header, Content, Button, Text} from 'native-base';
-import {Dropdown} from 'react-native-material-dropdown';
+import React, { Component, useState } from 'react';
+import { View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { Container, Header, Content, Button, Text } from 'native-base';
+import { Dropdown } from 'react-native-material-dropdown';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 
-const {width: Width} = Dimensions.get('window');
+const { width: Width } = Dimensions.get('window');
 export default class CreateSchedule extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +36,7 @@ export default class CreateSchedule extends React.Component {
         });
         console.log(data);
 
-        this.setState({siteNames: data});
+        this.setState({ siteNames: data });
       })
       .catch((error) => console.log('Error : ', error));
 
@@ -53,7 +53,7 @@ export default class CreateSchedule extends React.Component {
             value: item.first_name + ' ' + item.last_name,
           };
         });
-        this.setState({guardNames: data});
+        this.setState({ guardNames: data });
       })
       .catch((error) => console.log('Error : ', error));
   }
@@ -115,21 +115,21 @@ export default class CreateSchedule extends React.Component {
   };
 
   scheduleClicked = () => {
-    this.fieldValidation();
+    
   };
 
   handlePicker = (date) => {
-    this.setState({isVisible: false});
-    this.setState({selectedDate: moment(date).format('YYYY-MM-DD')});
+    this.setState({ isVisible: false });
+    this.setState({ selectedDate: moment(date).format('YYYY-MM-DD') });
     //selectedDate: moment(date).format('MM-DD-YYYY')
   };
 
   showDatePicker = () => {
-    this.setState({isVisible: true});
+    this.setState({ isVisible: true });
   };
 
   hideDatePicker = () => {
-    this.setState({isVisible: false});
+    this.setState({ isVisible: false });
   };
 
   getCorrespondingId=async(guardName)=>{
@@ -197,9 +197,9 @@ export default class CreateSchedule extends React.Component {
               marginBottom: 20,
             }}
             rippleCentered={true}
-            inputContainerStyle={{borderBottomColor: 'transparent'}}
+            inputContainerStyle={{ borderBottomColor: 'transparent' }}
             data={this.state.guardNames}
-            valueExtractor={({value}) => value}
+            valueExtractor={({ value }) => value}
             onChangeText={(value) => {
             this.setState({selectedGuardName: value});
             this.guardIdDropDown.setState({ value: '' });
@@ -236,8 +236,8 @@ export default class CreateSchedule extends React.Component {
           <Text style={styles.dateLabel}>Site Name:</Text>
           <Dropdown
             //style= {styles.dropdown}
-            dropdownOffset={{top: 10, left: 20}}
-            dropdownMargins={{min: 10, max: 50}}
+            dropdownOffset={{ top: 10, left: 20 }}
+            dropdownMargins={{ min: 10, max: 50 }}
             containerStyle={{
               borderWidth: 1,
               borderColor: 'lightgrey',
@@ -248,11 +248,11 @@ export default class CreateSchedule extends React.Component {
               marginBottom: 20,
             }}
             rippleCentered={true}
-            inputContainerStyle={{borderBottomColor: 'transparent'}}
+            inputContainerStyle={{ borderBottomColor: 'transparent' }}
             data={this.state.siteNames}
-            valueExtractor={({value}) => value}
+            valueExtractor={({ value }) => value}
             onChangeText={(value) => {
-              this.setState({selectedSiteName: value});
+              this.setState({ selectedSiteName: value });
             }}
           />
         </View>
@@ -260,8 +260,8 @@ export default class CreateSchedule extends React.Component {
           <Text style={styles.dateLabel}>Shift Time:</Text>
           <Dropdown
             //style= {styles.dropdown}
-            dropdownOffset={{top: 10, left: 20}}
-            dropdownMargins={{min: 5, max: 10}}
+            dropdownOffset={{ top: 10, left: 20 }}
+            dropdownMargins={{ min: 5, max: 10 }}
             containerStyle={{
               borderWidth: 1,
               borderColor: 'lightgrey',
@@ -272,11 +272,11 @@ export default class CreateSchedule extends React.Component {
               marginBottom: 20,
             }}
             rippleCentered={true}
-            inputContainerStyle={{borderBottomColor: 'transparent'}}
+            inputContainerStyle={{ borderBottomColor: 'transparent' }}
             data={shiftTime}
-            valueExtractor={({value}) => value}
+            valueExtractor={({ value }) => value}
             onChangeText={(value) => {
-              this.setState({selectedShiftTiming: value});
+              this.setState({ selectedShiftTiming: value });
             }}
           />
         </View>
