@@ -32,33 +32,33 @@ export default class ViewScheduleAdmin extends React.Component {
     }   
     _keyExtractor = (datasource, index) => datasource._id;
 
-
-    getGuardNameById = (_id)=>{
-        return(
-            /** Fetching Guard Names */
+    //delete it...not using it anymore
+    // getGuardNameById = (_id)=>{
+    //     return(
+    //         /** Fetching Guard Names */
             
-            fetch(global.hostUrl + '/users/getName', {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    _id: _id
-                })
-            })
-                .then((response) => response.json())
-                .then((responseData) => {
-                    console.log(responseData)
-                    var data = responseData.map(function (item) {
-                        return {
-                          value: item.first_name + item.last_name
-                        };
-                    })
-                })
-                .catch((error) => console.log('Error : ', error))
-        )
-    }
+    //         fetch(global.hostUrl + '/users/getName', {
+    //             method: "POST",
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({
+    //                 _id: _id
+    //             })
+    //         })
+    //             .then((response) => response.json())
+    //             .then((responseData) => {
+    //                 console.log(responseData)
+    //                 var data = responseData.map(function (item) {
+    //                     return {
+    //                       value: item.first_name + item.last_name
+    //                     };
+    //                 })
+    //             })
+    //             .catch((error) => console.log('Error : ', error))
+    //     )
+    // }
 
     componentDidMount() {
         this.getUserApi();
