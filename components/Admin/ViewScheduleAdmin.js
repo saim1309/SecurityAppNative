@@ -16,7 +16,7 @@ export default class ViewScheduleAdmin extends React.Component {
     getUserApi = () => {
         return (
             /** Fetching Guard Names */
-            fetch(global.hostUrl + '/users/', {
+            fetch(global.hostUrl + '/shifts/', {
                 method: 'GET',
             })
                 .then((response) => response.json())
@@ -31,6 +31,34 @@ export default class ViewScheduleAdmin extends React.Component {
         )
     }   
     _keyExtractor = (datasource, index) => datasource._id;
+
+
+    getGuardNameById = (_id)=>{
+        return(
+            /** Fetching Guard Names */
+            
+            fetch(global.hostUrl + '/users/getName', {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    _id: _id
+                })
+            })
+                .then((response) => response.json())
+                .then((responseData) => {
+                    console.log(responseData)
+                    var data = responseData.map(function (item) {
+                        return {
+                          value: item.first_name + item.last_name
+                        };
+                    })
+                })
+                .catch((error) => console.log('Error : ', error))
+        )
+    }
 
     componentDidMount() {
         this.getUserApi();
@@ -54,11 +82,12 @@ export default class ViewScheduleAdmin extends React.Component {
                     <Card>
                         <CardItem>
                             <View style={styles.userinfo}>
-                                <Text>
-                                    Name: {item.first_name} {item.last_name}
-                                </Text>
-                                <Text>Email: {item.email}</Text>
-                                <Text>Phone: {item.phone}</Text>
+                                <Text>ID: {item._id}</Text>
+                                <Text>Site ID: {item.site_name}</Text>
+                                <Text>Shift Timing: {item.shift_slot}</Text>
+                                <Text>Shift Date: {item.date}</Text>
+                                <Text>Guard Id: {item.guard_id}</Text>
+                                
                             </View>
                         </CardItem>
                     </Card>
