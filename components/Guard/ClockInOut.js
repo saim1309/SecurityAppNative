@@ -39,6 +39,39 @@ export default class ClockInOut extends Component {
     } )
     
   }
+
+  //handling clock out functionality
+  clockOut=()=>{
+    //fetch url for clock out api from node
+    fetch(global.hostUrl+"/shifts/clockout", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      //sending date and site name as parameter to api
+      body: JSON.stringify({
+        date:moment().format('yyyy-MM-DD'),
+        site_name:this.state.selectedSiteName
+      })
+    }) 
+    //collecting back response from api and converting in text
+    .then((response) => response.text())
+    .then((responseData) => {
+       //console.log(responseData)
+       //alerting back the response getting back from api
+       alert(responseData)
+    })
+    //handling error from api in catch block
+    .catch(error =>{
+      console.log("Error : ",error)
+      alert(error)
+    } )
+    
+  }
+
+
+
   componentDidMount() {
     /**fetching site names */
     fetch(global.hostUrl + '/sites/', {
