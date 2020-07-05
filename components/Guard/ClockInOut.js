@@ -30,9 +30,13 @@ export default class ClockInOut extends Component {
     .then((response) => response.text())
     .then((responseData) => {
        console.log(responseData)
+       alert(responseData)
     })
-    .catch(error => console.log("Error : ",error))
-    alert('user clocked in successfully')
+    .catch(error =>{
+      console.log("Error : ",error)
+      alert(error)
+    } )
+    
   }
   componentDidMount() {
     /**fetching site names */
