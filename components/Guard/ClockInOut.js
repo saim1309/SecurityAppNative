@@ -16,6 +16,7 @@ export default class ClockInOut extends Component {
   }
 
   clockIn=()=>{
+    console.log(new Date().toLocaleDateString('yyyy-MM-dd'))
     fetch(global.hostUrl+"/shifts/clockin", {
       method: "POST",
       headers: {
@@ -23,7 +24,7 @@ export default class ClockInOut extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        date:new Date().toLocaleTimeString('yyyy-MM-dd'),
+        date:moment().format('yyyy-MM-DD'),
         site_name:this.state.selectedSiteName
       })
     }) 
@@ -78,9 +79,12 @@ export default class ClockInOut extends Component {
               paddingRight: 10,
               backgroundColor:'#008CBA',
               marginBottom: 20,
+              paddingLeft:100
+              
             }}
             rippleCentered={true}
             placeholder='Select Site'
+            placeholderTextColor='#fff'
             inputContainerStyle={{ borderBottomColor: 'transparent' }}
             data={this.state.siteNames}
             valueExtractor={({ value }) => value}
@@ -106,7 +110,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#DAE0E2',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:"#A4B0BD"
   },
   siteDropdown:{
     flexDirection:'row',
@@ -121,8 +124,8 @@ const styles = StyleSheet.create({
       backgroundColor:"#008CBA",
       width:350 ,
       height : 60,
-      marginTop:30,
-      marginBottom:120
+      marginTop:50,
+      marginBottom:50
       
   },
   dateLabel: {

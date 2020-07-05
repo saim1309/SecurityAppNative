@@ -115,6 +115,8 @@ export default class RegisterUser extends React.Component {
               placeholder="Enter First Name"
               ref={'fname'}
               autoCompleteType = "off"
+              placeholderTextColor='#616C6F'
+
               onChangeText={(value) => this.setState({ newFirstName: value })}
           />
           <TextInput
@@ -122,11 +124,13 @@ export default class RegisterUser extends React.Component {
               placeholder="Enter Last Name"
               ref={'lname'}
               autoCompleteType = "off"
+              placeholderTextColor='#616C6F'
               onChangeText={(value) => this.setState({ newLastName: value })}
           />
           <TextInput
             style={styles.textInput}
             placeholder="Enter Phone number"
+            placeholderTextColor='#616C6F'
             ref={'phoneNumber'}
             keyboardType = "number-pad"
             onChangeText={(value) => this.setState({ newPhoneNumber: value })}
@@ -134,6 +138,7 @@ export default class RegisterUser extends React.Component {
           <TextInput
               style={styles.textInput}
               placeholder="Enter Email"
+              placeholderTextColor='#616C6F'
               ref={'email'}
               onChangeText={(value) => this.setState({ newEmail: value })}
           />
@@ -141,6 +146,7 @@ export default class RegisterUser extends React.Component {
               style={styles.textInput}
               secureTextEntry={true}
               placeholder="Enter Password (min 5 characters)"
+              placeholderTextColor='#616C6F'
               ref={'password'}
               onChangeText={(value) => this.setState({ newPassword: value })}
           />
@@ -148,6 +154,7 @@ export default class RegisterUser extends React.Component {
               style={styles.textInput}
               secureTextEntry={true}
               placeholder="Confirm Password"
+              placeholderTextColor='#616C6F'
               ref={'confirmPassword'}
               onChangeText={(value) => this.setState({ newConfirmPassword: value })}
           />
@@ -173,8 +180,8 @@ const styles = StyleSheet.create({
   textInput: {
     alignSelf: 'stretch',
     height: 40,
-    borderBottomColor: '#ffff',
-    borderBottomWidth: 1,
+    borderBottomColor: '#000',
+    borderBottomWidth: 2,
     marginBottom: 20,
   },
   loginButton: {

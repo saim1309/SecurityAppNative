@@ -195,6 +195,7 @@ export default class CreateSchedule extends React.Component {
               height: 50,
               paddingRight: 10,
               marginBottom: 20,
+              paddingLeft:20
             }}
             rippleCentered={true}
             inputContainerStyle={{ borderBottomColor: 'transparent' }}
@@ -221,6 +222,8 @@ export default class CreateSchedule extends React.Component {
               height: 50,
               paddingRight: 10,
               marginBottom: 20,
+              paddingLeft:20,
+              fontSize:25
             }}
             rippleCentered={true}
             ref={c => (this.guardIdDropDown = c)}
@@ -246,6 +249,7 @@ export default class CreateSchedule extends React.Component {
               height: 50,
               paddingRight: 10,
               marginBottom: 20,
+              paddingLeft:20
             }}
             rippleCentered={true}
             inputContainerStyle={{ borderBottomColor: 'transparent' }}
@@ -270,6 +274,8 @@ export default class CreateSchedule extends React.Component {
               height: 50,
               paddingRight: 10,
               marginBottom: 20,
+              paddingLeft:20,
+              fontSize:25
             }}
             rippleCentered={true}
             inputContainerStyle={{ borderBottomColor: 'transparent' }}
@@ -301,6 +307,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 30,
     marginTop: 50,
+   // backgroundColor:'#DAE0E2'
   },
   dateLabel: {
     fontSize: 20,
@@ -316,7 +323,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   datePickerButton: {
-    backgroundColor: '#DAE0E2',
+    backgroundColor: '#99AAAB',
     borderRadius: 5,
     height: 30,
     width: 200,
