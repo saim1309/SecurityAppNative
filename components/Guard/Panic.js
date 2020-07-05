@@ -5,16 +5,6 @@ import Communications from 'react-native-communications';
 
 export default class Panic extends React.Component{
 
-//   componentDidMount() {
-//     this.backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
-//         return this.props.navigation.navigate("Home");
-//     });
-// }
-
-// componentWillUnmount() {
-//     this.backHandler.remove();
-// }
-
   render(){
     const params = this.props.route.params;
     const user_name = params.username
@@ -54,7 +44,7 @@ export default class Panic extends React.Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#A4B0BD',
+    backgroundColor: '#DAE0E2',
     alignItems: 'center',
     justifyContent: 'center',
   },
