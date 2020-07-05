@@ -48,7 +48,7 @@ export default class RegisterUser extends React.Component {
              body: JSON.stringify({
                 first_name:this.state.newFirstName,
                 last_name :this.state.newLastName,
-                email:this.state.newEmail,
+                email:this.state.newEmail.toLowerCase(),
                 password:this.state.newPassword,
                 phone:this.state.newPhoneNumber
              })
@@ -60,7 +60,10 @@ export default class RegisterUser extends React.Component {
               this.setState({response:responseData})
               console.log("After setting the state")
            })
-           .catch(error => console.log("Error : ",error))
+           .catch(error => {
+             console.log("Error : ",error)
+             this.setState({isLoading:false})
+           })
   }
 
   inputValidation = async(fname,lname,phoneNumber,email,password,confirmPassword) => {

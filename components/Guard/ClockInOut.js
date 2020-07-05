@@ -129,7 +129,7 @@ export default class ClockInOut extends Component {
         <TouchableOpacity style = {styles.Button} onPress={()=>{this.clockIn()}}>
           <Text style={styles.text}>Clock In</Text>
           </TouchableOpacity>
-          <TouchableOpacity style = {styles.Button}>
+          <TouchableOpacity style = {styles.Button}  onPress={()=>{this.clockOut()}}>
             <Text style={styles.text}>Clock Out</Text>
           </TouchableOpacity>
         </View>

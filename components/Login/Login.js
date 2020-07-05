@@ -80,7 +80,9 @@ export default class Login extends Component {
             return false;
         }
         else{
-            await this.userAuthentication(username, password)
+            let usernameLower = username.toLowerCase();
+            this.setState({username: usernameLower})
+            await this.userAuthentication(this.state.username, this.state.password)
             if(this.state.userAuthenticated==true){
                 return true
             }
