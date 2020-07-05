@@ -25,7 +25,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
         headerStyle: {
-          backgroundColor: '#192A56',
+          backgroundColor: '#2475B0',
         },
         headerTintColor: '#fff',
         headerTitleAlign:'center',

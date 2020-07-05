@@ -1,21 +1,92 @@
 import React,{Component} from 'react';
-import { Button, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Dropdown } from 'react-native-material-dropdown';
+import { Button, View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import moment from 'moment'
 
 
+const { width: Width } = Dimensions.get('window');
 export default class ClockInOut extends Component {
 
-  clockIn=()=>{
-    alert('user clocked in at '+new Date().toLocaleTimeString('HH:mm:ss'))
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedSiteName: '',
+      siteNames: [],
+    };
   }
+
+  clockIn=()=>{
+    fetch(global.hostUrl+"/shifts/clockin", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        date:new Date().toLocaleTimeString('yyyy-MM-dd'),
+        site_name:this.state.selectedSiteName
+      })
+    }) 
+    .then((response) => response.text())
+    .then((responseData) => {
+       console.log(responseData)
+    })
+    .catch(error => console.log("Error : ",error))
+    alert('user clocked in successfully')
+  }
+  componentDidMount() {
+    /**fetching site names */
+    fetch(global.hostUrl + '/sites/', {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        console.log(responseData)
+        var data = responseData.map(function (item) {
+          return {
+            value: item.site_name,
+          };
+        });
+        console.log(data);
+
+        this.setState({ siteNames: data });
+      })
+      .catch((error) => console.log('Error : ', error));
+    }
+
   render(){
     const params = this.props.route.params;
     const user_name = params.username
     const age = params.age;
     return (
       <View style={styles.container}>
-          <TouchableOpacity style = {styles.Button} onPress={()=>{this.clockIn()}}>
-            <Text style={styles.text}>Clock In</Text>
+        <View>
+          <Dropdown
+            style= {styles.dropdown}
+            dropdownOffset={{ top: 10, left: 20 }}
+            dropdownMargins={{ min: 10, max: 50 }}
+            containerStyle={{
+              borderWidth: 2,
+              borderColor: 'black',
+              borderRadius: 5,
+              width: Width * 0.9,
+              height: 50,
+              paddingRight: 10,
+              backgroundColor:'#008CBA',
+              marginBottom: 20,
+            }}
+            rippleCentered={true}
+            placeholder='Select Site'
+            inputContainerStyle={{ borderBottomColor: 'transparent' }}
+            data={this.state.siteNames}
+            valueExtractor={({ value }) => value}
+            onChangeText={(value) => {
+              this.setState({ selectedSiteName: value });
+            }}
+          />
+        </View>
+        <TouchableOpacity style = {styles.Button} onPress={()=>{this.clockIn()}}>
+          <Text style={styles.text}>Clock In</Text>
           </TouchableOpacity>
           <TouchableOpacity style = {styles.Button}>
             <Text style={styles.text}>Clock Out</Text>
@@ -33,6 +104,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor:"#A4B0BD"
   },
+  siteDropdown:{
+    flexDirection:'row',
+    marginTop:80,
+  },
   Button:{
       alignSelf: "center",
       borderColor: "#000",
@@ -46,11 +121,24 @@ const styles = StyleSheet.create({
       marginBottom:120
       
   },
+  dateLabel: {
+    fontSize: 20,
+    //alignSelf:"center",
+    width: 150,
+    fontWeight:'bold',
+    marginRight:0,
+    
+  },
   text:{
       alignSelf:"center",
       color: "#fff",
       fontSize:30,
       paddingHorizontal:10,
       paddingBottom:10
+  },
+  dropdown:{
+    color:'#fff',
+    fontSize:25,
+    marginLeft:0,
   }
 });

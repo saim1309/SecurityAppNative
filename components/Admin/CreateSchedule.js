@@ -41,8 +41,8 @@ export default class CreateSchedule extends React.Component {
       .catch((error) => console.log('Error : ', error));
 
     /** Fetching Guard Names */
-    fetch(global.hostUrl + '/users/', {
-      method: 'GET',
+    fetch(global.hostUrl + '/users/guardNames', {
+      method: 'POST',
     })
       .then((response) => response.json())
       .then((responseData) => {
@@ -288,7 +288,6 @@ export default class CreateSchedule extends React.Component {
           onConfirm={this.handlePicker}
           onCancel={this.hideDatePicker}
         />
-
         <Button block info onPress={this.fieldValidation.bind(this)}>
           <Text>SCHEDULE</Text>
         </Button>

@@ -163,7 +163,7 @@ export default class RegisterUser extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0A79DF',
+    backgroundColor: '#DAE0E2',
     paddingLeft: 60,
     paddingRight: 60,
   },
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   loginButton: {
-    backgroundColor: "#192A56",
+    backgroundColor: "#2475B0",
     paddingVertical: 15,
     borderRadius: 5,
     marginTop: 20,

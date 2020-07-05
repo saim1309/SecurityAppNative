@@ -155,7 +155,7 @@ export default class UpdateUser extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#0A79DF',
+        backgroundColor: '#74B9FF',
         paddingLeft: 60,
         paddingRight: 60,
     },
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     loginButton: {
-        backgroundColor: "#192A56",
+        backgroundColor: "#1769aa",
         paddingVertical: 15,
         borderRadius: 5,
         marginTop: 20,

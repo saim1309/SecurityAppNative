@@ -32,34 +32,6 @@ export default class ViewScheduleAdmin extends React.Component {
     }   
     _keyExtractor = (datasource, index) => datasource._id;
 
-    //delete it...not using it anymore
-    // getGuardNameById = (_id)=>{
-    //     return(
-    //         /** Fetching Guard Names */
-            
-    //         fetch(global.hostUrl + '/users/getName', {
-    //             method: "POST",
-    //             headers: {
-    //                 'Accept': 'application/json',
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify({
-    //                 _id: _id
-    //             })
-    //         })
-    //             .then((response) => response.json())
-    //             .then((responseData) => {
-    //                 console.log(responseData)
-    //                 var data = responseData.map(function (item) {
-    //                     return {
-    //                       value: item.first_name + item.last_name
-    //                     };
-    //                 })
-    //             })
-    //             .catch((error) => console.log('Error : ', error))
-    //     )
-    // }
-
     componentDidMount() {
         this.getUserApi();
     }
@@ -80,13 +52,13 @@ export default class ViewScheduleAdmin extends React.Component {
                 keyExtractor={this._keyExtractor}
                 renderItem={({ item }) => (
                     <Card>
-                        <CardItem>
-                            <View style={styles.userinfo}>
-                                <Text>ID: {item._id}</Text>
-                                <Text>Site Name: {item.site_name}</Text>
-                                <Text>Shift Timing: {item.shift_slot}</Text>
-                                <Text>Shift Date: {item.date}</Text>
-                                <Text>Guard Name: {item.guard_name}</Text>
+                        <CardItem style={styles.eachItem} >
+                            <View style={styles.userInfo}>
+                                <Text style={styles.textStyles}>ID:                     {item._id}</Text>
+                                <Text style={styles.textStyles}>Site Name:      {item.site_name}</Text>
+                                <Text style={styles.textStyles}>Shift Timing:   {item.shift_slot}</Text>
+                                <Text style={styles.textStyles}>Shift Date:       {item.date}</Text>
+                                <Text style={styles.textStyles}>Guard Name:   {item.guard_name}</Text>
                                 
                             </View>
                         </CardItem>
@@ -110,7 +82,19 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center"
     },
-    userinfo:{
-
+    userInfo:{
+        color:'#DAE0E2',
+    },
+    eachItem:{
+        borderWidth:2,
+        borderRadius:10,
+        borderColor:'#1287A5'
+    },
+    textStyles:{
+        fontSize:17,
+        fontFamily:'Arial',
+        fontWeight:'bold',
+        color:'#616C6F',
     }
+    
 });
