@@ -32,7 +32,7 @@ export default class AdminHome extends Component {
                 {<Text style={styles.welcome}>Welcome {user_name}</Text>}
                 <View style={styles.gridContainer}>
                     <View style={styles.rowContainer}>
-                        <View style={styles.TopItem}>
+                        <View style={styles.LeftItem}>
                             <TouchableOpacity onPress={() => { this.props.navigation.navigate('RegisterUser', { username: user_name, age: 16 }) }}>
                                 <Image
                                     style={styles.image}
@@ -41,6 +41,17 @@ export default class AdminHome extends Component {
                                 <Text style={styles.iconTitle}>Register User</Text>
                             </TouchableOpacity>
                         </View>
+                        <View style={styles.RightItem}>
+                            <TouchableOpacity onPress={() => {this.props.navigation.navigate("UpdateUser")}}>
+                                <Image
+                                    style={styles.image}
+                                    source={require('../../assets/updateRecords1.jpg')}
+                                    resizeMode= "stretch"
+                                />
+                                <Text style={styles.iconTitle}>Update Records</Text>
+                            </TouchableOpacity>
+                        </View>
+
                     </View>
                     <View style={styles.rowContainer}>
                         <View style={styles.LeftItem}>
@@ -49,7 +60,7 @@ export default class AdminHome extends Component {
                                     style={styles.image}
                                     source={require('../../assets/createSchedule.jpg')}
                                 />
-                                <Text style={styles.iconTitle}>Schedules</Text>
+                                <Text style={styles.iconTitle}>Create Schedules</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
@@ -61,7 +72,9 @@ export default class AdminHome extends Component {
                                 <Text style={styles.iconTitle}>Security Records</Text>
                             </TouchableOpacity>
                         </View>
-                    </View>                 
+
+                    </View>
+                    
                 </View>
             </View>
         );
@@ -102,10 +115,6 @@ const styles = StyleSheet.create({
         marginTop:20,
         fontWeight:'bold'
     },
-
-    TopItem:{
-        marginLeft:90
-    },
     rowContainer: {
         flexDirection: "row",
         marginTop:40,
@@ -113,8 +122,8 @@ const styles = StyleSheet.create({
     image: {
         width: 150,
         height: 150,
-        //borderWidth:2,
-        //borderColor:'#fff',
+       // borderWidth:2,
+        //borderColor:'#000',
         borderRadius:10,
     },
     LeftItem:{
