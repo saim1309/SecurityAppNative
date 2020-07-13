@@ -32,7 +32,7 @@ export default class AdminHome extends Component {
                 {<Text style={styles.welcome}>Welcome {user_name}</Text>}
                 <View style={styles.gridContainer}>
                     <View style={styles.rowContainer}>
-                        <View style={styles.LeftItem}>
+                        <View style={styles.TopItem}>
                             <TouchableOpacity onPress={() => { this.props.navigation.navigate('RegisterUser', { username: user_name, age: 16 }) }}>
                                 <Image
                                     style={styles.image}
@@ -41,17 +41,6 @@ export default class AdminHome extends Component {
                                 <Text style={styles.iconTitle}>Register User</Text>
                             </TouchableOpacity>
                         </View>
-                        <View style={styles.RightItem}>
-                            <TouchableOpacity onPress={() => {this.props.navigation.navigate("UpdateUser")}}>
-                                <Image
-                                    style={styles.image}
-                                    source={require('../../assets/updateRecords1.jpg')}
-                                    resizeMode= "stretch"
-                                />
-                                <Text style={styles.iconTitle}>Update Records</Text>
-                            </TouchableOpacity>
-                        </View>
-
                     </View>
                     <View style={styles.rowContainer}>
                         <View style={styles.LeftItem}>
@@ -72,9 +61,7 @@ export default class AdminHome extends Component {
                                 <Text style={styles.iconTitle}>Security Records</Text>
                             </TouchableOpacity>
                         </View>
-
-                    </View>
-                    
+                    </View>                 
                 </View>
             </View>
         );
@@ -114,6 +101,10 @@ const styles = StyleSheet.create({
         //borderBottomWidth:1,
         marginTop:20,
         fontWeight:'bold'
+    },
+
+    TopItem:{
+        marginLeft:90
     },
     rowContainer: {
         flexDirection: "row",

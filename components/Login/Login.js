@@ -6,7 +6,7 @@ import logo from '../../assets/logo1.png'
 //import Home from './Home.js';
 
 const {width:Width} = Dimensions.get('window')
-global.hostUrl="http://192.168.0.17:1234"
+global.hostUrl="http://192.168.0.18:1234"
 
 export default class Login extends Component {
     static navigationOptions={
@@ -32,6 +32,7 @@ export default class Login extends Component {
     }
       userAuthentication=async(username,password)=>{
             console.log('*************in userAuthentication fn***********************')
+            console.log("Usename : "+username)
             await fetch(hostUrl+"/users/login", {
              method: "POST",
              headers: {
@@ -39,7 +40,7 @@ export default class Login extends Component {
                'Content-Type': 'application/json'
              },
              body: JSON.stringify({
-               email: username,
+               email: username.toLowerCase(),
                password: password,
              })
            })
@@ -78,7 +79,7 @@ export default class Login extends Component {
             return false;
         }
         else{
-            let usernameLower = username.toLowerCase();
+            let usernameLower = this.state.username.toLowerCase();
             this.setState({username: usernameLower})
             await this.userAuthentication(this.state.username, this.state.password)
             if(this.state.userAuthenticated==true){
