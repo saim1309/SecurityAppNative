@@ -51,9 +51,7 @@ import {Button} from 'native-base';
         this.componentWillUnmount()
         this.props.navigation.navigate(screenName, { username: user_name})
     }
-
     
-
     render() {
         const params = this.props.route.params;
         const user_name = params.username
