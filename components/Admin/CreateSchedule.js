@@ -21,6 +21,7 @@ export default class CreateSchedule extends React.Component {
     };
   }
 
+
   componentDidMount() {
     /**fetching site names */
     fetch(global.hostUrl + '/sites/', {
@@ -80,7 +81,8 @@ export default class CreateSchedule extends React.Component {
       this.state.selectedDate == '' ||
       this.state.selectedGuardName == '' ||
       this.state.selectedSiteName == '' ||
-      this.state.selectedShiftTiming == ''
+      this.state.selectedShiftTiming == ''||
+      this.state.selectedGuardId == ''
     ) {
       alert('All fields are necessary');
     } else if (this.state.selectedDate < currentDate) {
@@ -105,6 +107,9 @@ export default class CreateSchedule extends React.Component {
       .then((responseData) => {
          console.log(responseData)
          alert(responseData)
+         if(responseData=="Schedule is created successfully."){
+           this.resetAllFields();
+         }
       })
       .catch(error=> {
         console.log("Error : ",error)
@@ -113,6 +118,10 @@ export default class CreateSchedule extends React.Component {
       
     }
   };
+
+  resetAllFields=()=>{
+
+  }
 
   scheduleClicked = () => {
     
@@ -184,7 +193,6 @@ export default class CreateSchedule extends React.Component {
         <View>
           <Text style={styles.dateLabel}>Guard Name:</Text>
           <Dropdown
-            //style= {styles.dropdown}
             dropdownOffset={{top: 10, left: 20}}
             dropdownMargins={{min: 5, max: 30}}
             containerStyle={{
@@ -204,6 +212,7 @@ export default class CreateSchedule extends React.Component {
             onChangeText={(value) => {
             this.setState({selectedGuardName: value});
             this.guardIdDropDown.setState({ value: '' });
+            this.state.selectedGuardId=''
             this.getCorrespondingId(this.state.selectedGuardName)
             }}
           />

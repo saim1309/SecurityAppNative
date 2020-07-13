@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View,Image, ImageBackground, Dimensions, StatusBar, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
+import {StyleSheet, Text, View,Image, ImageBackground, Dimensions, StatusBar, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'
 import bgImage from '../../assets/background.png'
 import logo from '../../assets/logo1.png'
@@ -12,7 +12,6 @@ export default class Login extends Component {
     static navigationOptions={
         header:null
     }
-
     constructor(props){
         super(props);
         this.emailInput = React.createRef();
@@ -26,7 +25,6 @@ export default class Login extends Component {
             userAuthenticated:false,
             isLoading:true,
             errorMessage:"Wrong email or password"
-
         };
     }
     componentDidMount(){
@@ -150,7 +148,7 @@ export default class Login extends Component {
                             keyboardType="email-address"
                             autoCapitalize="none"
                             autoCorrect={false}
-                            onSubmitEditing= {()=> this.passwordInput.focus()}
+                            //onSubmitEditing= {()=> this.passwordInput.focus()}
                             style={styles.input}
                         />
                     </View>              

@@ -59,6 +59,7 @@ export default class ViewScheduleAdmin extends React.Component {
                                 <Text style={styles.textStyles}>Shift Timing:   {item.shift_slot}</Text>
                                 <Text style={styles.textStyles}>Shift Date:       {item.date}</Text>
                                 <Text style={styles.textStyles}>Guard Name:   {item.guard_name}</Text>
+                                <Text style={styles.textStyles}>Assigned By:   {item.created_by}</Text>
                                 
                             </View>
                         </CardItem>

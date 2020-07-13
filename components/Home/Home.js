@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
 
     welcome:{
         fontSize:24,
-        borderBottomWidth:1,
+        //borderBottomWidth:1,
         marginTop:20,
         fontWeight:'bold'
     },
@@ -151,8 +151,8 @@ const styles = StyleSheet.create({
     image: {
         width: 150,
         height: 150,
-        borderWidth:2,
-        borderColor:'#000',
+       // borderWidth:2,
+       // borderColor:'#000',
         borderRadius:10,
     },
     LeftItem:{
