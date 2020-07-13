@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
         width: 150,
         height: 150,
         //borderWidth:2,
-        //borderColor:'#000',
+        //borderColor:'#fff',
         borderRadius:10,
     },
     LeftItem:{
