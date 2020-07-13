@@ -6,7 +6,7 @@ import logo from '../../assets/logo1.png'
 //import Home from './Home.js';
 
 const {width:Width} = Dimensions.get('window')
-global.hostUrl="http://192.168.0.18:1234"
+global.hostUrl="http://192.168.0.17:1234"
 
 export default class Login extends Component {
     static navigationOptions={
