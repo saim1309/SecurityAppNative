@@ -70,7 +70,7 @@ export default class CreateSchedule extends React.Component {
     }
     if (date < 10) {
       date = '0' + date;
-    }``
+    }
 
     var currentDate = year + '-' + month + '-' + date;
     console.log(this.state.selectedDate);

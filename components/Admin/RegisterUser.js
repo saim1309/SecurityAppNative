@@ -4,7 +4,6 @@ import {TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class RegisterUser extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -89,7 +88,6 @@ export default class RegisterUser extends React.Component {
       else if(regPhone.test(this.state.newPhoneNumber) === false){
         console.log(this.state.newPhoneNumber)
         alert('Phone number invalid')
-
     }
     else {
       var formattedPhoneNumber = this.state.newPhoneNumber.replace(regPhone, "($1) $2-$3");
@@ -119,7 +117,6 @@ export default class RegisterUser extends React.Component {
               ref={'fname'}
               autoCompleteType = "off"
               placeholderTextColor='#616C6F'
-
               onChangeText={(value) => this.setState({ newFirstName: value })}
           />
           <TextInput
