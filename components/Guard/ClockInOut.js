@@ -58,7 +58,6 @@ export default class ClockInOut extends Component {
     //collecting back response from api and converting in text
     .then((response) => response.text())
     .then((responseData) => {
-       //console.log(responseData)
        //alerting back the response getting back from api
        alert(responseData)
     })

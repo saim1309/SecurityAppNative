@@ -60,7 +60,7 @@ export default class AdminHome extends Component {
                                     style={styles.image}
                                     source={require('../../assets/createSchedule.jpg')}
                                 />
-                                <Text style={styles.iconTitle}>Create Schedules</Text>
+                                <Text style={styles.iconTitle}>Schedules</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     },
     welcome:{
         fontSize:24,
-        borderBottomWidth:1,
+        //borderBottomWidth:1,
         marginTop:20,
         fontWeight:'bold'
     },
@@ -122,8 +122,8 @@ const styles = StyleSheet.create({
     image: {
         width: 150,
         height: 150,
-        borderWidth:2,
-        borderColor:'#000',
+        //borderWidth:2,
+        //borderColor:'#000',
         borderRadius:10,
     },
     LeftItem:{
