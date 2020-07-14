@@ -10,8 +10,8 @@ public class MainActivity extends ReactActivity {
    * rendering of the component.
    */
 
-  import android.content.Intent; // <-- include if not already there
-import com.tkporter.sendsms.SendSMSPackage;
+// <-- include if not already there
+
   @Override
   protected String getMainComponentName() {
     return "SecurityAppNative";
