@@ -9,7 +9,8 @@ export default class ViewScheduleAdmin extends React.Component {
         super(props)
         this.state = {
             isLoading: true,
-            dataSource: []
+            dataSource: [],
+            noShift:false
         }
     }
 
@@ -25,7 +26,13 @@ export default class ViewScheduleAdmin extends React.Component {
                     this.setState({
                         isLoading: false,
                         dataSource: this.state.dataSource.concat(responseData)
+                         
                     })
+                    console.log(responseData.length)
+                    if(responseData.length==0){
+                        console.log("Inside If")
+                        this.setState({noShift:true})                   
+                    }
                 })
                 .catch((error) => console.log('Error : ', error))
         )
@@ -46,25 +53,39 @@ export default class ViewScheduleAdmin extends React.Component {
             );
         }
         //if all data is loaded up from api then data will be displayed
-        return (
-            <FlatList
-                data={this.state.dataSource}      
-                keyExtractor={this._keyExtractor}
-                renderItem={({ item }) => (
-                    <Card>
-                        <CardItem style={styles.eachItem}>
-                            <View style={styles.userinfo}>
-                            <Text style={styles.textStyles}>ID:                     {item._id}</Text>
-                                <Text style={styles.textStyles}>Site Name:      {item.site_name}</Text>
-                                <Text style={styles.textStyles}>Shift Timing:   {item.shift_slot}</Text>
-                                <Text style={styles.textStyles}>Shift Date:       {item.date}</Text>
-                                <Text style={styles.textStyles}>Assigned By:   {item.created_by}</Text>                            
-                            </View>
-                        </CardItem>
-                    </Card>
-                )}
-            />
-        );
+        if(this.state.noShift){
+            return(
+                <View style={styles.container}>
+                    <Text style={styles.NoShift}>You do not have any Shifts</Text>
+                </View>
+                
+            )
+        }
+        else{
+            return (  
+                <FlatList
+                    data={this.state.dataSource}     
+                   
+                    keyExtractor={this._keyExtractor}
+                    renderItem={({ item }) => (
+                        <Card>
+                            <CardItem style={styles.eachItem}>
+                                <View style={styles.userinfo}>
+                                <Text style={styles.textStyles}>ID:                     {item._id}</Text>
+                                    <Text style={styles.textStyles}>Site Name:      {item.site_name}</Text>
+                                    <Text style={styles.textStyles}>Shift Timing:   {item.shift_slot}</Text>
+                                    <Text style={styles.textStyles}>Shift Date:       {item.date}</Text>
+                                    <Text style={styles.textStyles}>Assigned By:   {item.created_by}</Text>                            
+                                </View>
+                            </CardItem>
+                        </Card>
+                    )}
+                />
+            );
+
+        }
+
+        
     }
 }
 
@@ -74,15 +95,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: "#A4B0BD"
+        // /backgroundColor: "#A4B0BD"
     },
     progress: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
     },
-    userinfo:{
-        
+    NoShift:{
+        flex: 1,
+        fontSize:24,
+        position:"absolute",
+        marginLeft:40,
+        fontFamily:"Times New Roman"
     },
     eachItem:{
         borderWidth:2,

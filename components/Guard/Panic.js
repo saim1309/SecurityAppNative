@@ -6,6 +6,10 @@ import Communications from 'react-native-communications';
 
 export default class Panic extends React.Component{
 
+  componentDidMount(){
+    
+  }
+
   render(){
     const params = this.props.route.params;
     const user_name = params.username
@@ -16,7 +20,7 @@ export default class Panic extends React.Component{
         <View style = {styles.imageButtonContainer}>
           <TouchableOpacity onPress={() => SendSMS.send({
             body: 'EMERGENCY!',
-            recipients: ['5197819206', '5483337140'],
+            recipients: ['5197819206'],
             successTypes: ['sent', 'queued'],
             allowAndroidSendWithoutReadPermission: true
           },(completed, cancelled, error) => {
