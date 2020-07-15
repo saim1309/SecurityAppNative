@@ -64,7 +64,7 @@ export default class AdminHome extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
-                            <TouchableOpacity onPress={() => {this.props.navigation.navigate("ViewReports")}}>
+                            <TouchableOpacity onPress={() => {this.props.navigation.navigate("SecurityRecords")}}>
                                 <Image
                                     style={styles.image}
                                     source={require('../../assets/viewReports.png')}

@@ -2,11 +2,11 @@ import React,{Component} from 'react';
 import { Button, View, Text } from 'react-native';
 
 
-export default class ViewReports extends Component {
+export default class ViewClockInOut extends Component {
    render(){   
     return (
       <View>
-          <Text>View Report</Text>
+          <Text>ViewClockInOut</Text>
       </View>
     );
    }
