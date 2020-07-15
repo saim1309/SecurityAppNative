@@ -48,13 +48,14 @@ export default class CreateSchedule extends React.Component {
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({guardData:responseData})
-        console.log(this.state.guardData)
+        console.log('guardData',this.state.guardData)
         var data = responseData.map(function (item) {
           return {
             value: item.first_name + ' ' + item.last_name,
           };
         });
         this.setState({ guardNames: data });
+        console.log('gaurdName', this.state.guardNames)
       })
       .catch((error) => console.log('Error : ', error));
   }

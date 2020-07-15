@@ -6,8 +6,57 @@ import Communications from 'react-native-communications';
 
 export default class Panic extends React.Component{
 
+  constructor(props) {
+    super(props)
+    this.state = {
+        adminPhoneNumber: "",
+        adminEmails:[]
+    }
+}
+
   componentDidMount(){
-    
+    //this.getAdminPhoneNumber();
+    this.getAdminEmail();
+  }
+
+  getAdminEmail = ()=>{
+    console.log('inside  phone number api');
+    return (
+      /** Fetching Admin Phone No */
+      fetch(global.hostUrl + '/users/email', {
+          method: 'POST',
+      })
+          .then((response) => response.json())
+          .then((responseData) => {
+              console.log(responseData)
+              
+              this.setState({
+                //adminEmails: this.state.adminEmails.concat(responseData)
+                adminEmails: responseData.email
+              })
+              console.log('checking email state',this.state.adminEmails)
+          })
+          .catch((error) => console.log('Error : ', error))
+    )
+  }
+
+  getAdminPhoneNumber = () =>{
+    console.log('inside  phone number api');
+    return (
+      /** Fetching Admin Phone No */
+      fetch(global.hostUrl + '/users/phoneNumber', {
+          method: 'POST',
+      })
+          .then((response) => response.json())
+          .then((responseData) => {
+              console.log(responseData)
+              this.setState({
+                adminPhoneNumber: respons     eData.phone
+              })
+              //console.log('checkig state',this.state.adminPhoneNumber)
+          })
+          .catch((error) => console.log('Error : ', error))
+  )
   }
 
   render(){
@@ -16,11 +65,11 @@ export default class Panic extends React.Component{
     return(
       <View style={styles.container}>
         <Text style = {styles.buttonText}>Hello {user_name}</Text>    
-        <Text style = {styles.buttonText}>What do you want to do???</Text>
+        <Text style = {styles.buttonText}>What do  want to do???</Text>
         <View style = {styles.imageButtonContainer}>
           <TouchableOpacity onPress={() => SendSMS.send({
             body: 'EMERGENCY!',
-            recipients: ['5197819206'],
+            recipients: [this.state.adminPhoneNumber],
             successTypes: ['sent', 'queued'],
             allowAndroidSendWithoutReadPermission: true
           },(completed, cancelled, error) => {
@@ -33,14 +82,14 @@ export default class Panic extends React.Component{
             />
             <Text style = {styles.buttonText}>SMS</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => Communications.phonecall('5483337140', true)}>
+          <TouchableOpacity onPress={() => Communications.phonecall(this.state.adminPhoneNumber, true)}>
             <Image
                 style={styles.image}
                 source={require('../../assets/call.png')}
             />
             <Text style = {styles.buttonText}>CALL</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => Communications.email(["saimahmad1234@gmail.com","zeefakarim@gmail.com"],null,null,"EMERGENCY ALERT!!!","Thers is an emergency..please contact")}>
+          <TouchableOpacity onPress={() => Communications.email([this.state.adminEmails],null,null,"EMERGENCY ALERT!!!","Thers is an emergency..please contact")}>
             <Image
                 style={styles.image}
                 source={require('../../assets/email1.png')}

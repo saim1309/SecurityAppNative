@@ -79,6 +79,8 @@ target 'SecurityAppNative' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-sms', :path => '../node_modules/react-native-sms'
+
   target 'SecurityAppNativeTests' do
     inherit! :complete
     # Pods for testing
