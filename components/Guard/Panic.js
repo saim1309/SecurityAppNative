@@ -15,7 +15,7 @@ export default class Panic extends React.Component{
 }
 
   componentDidMount(){
-    //this.getAdminPhoneNumber();
+    this.getAdminPhoneNumber();
     this.getAdminEmail();
   }
 
@@ -51,7 +51,7 @@ export default class Panic extends React.Component{
           .then((responseData) => {
               console.log(responseData)
               this.setState({
-                adminPhoneNumber: respons     eData.phone
+                adminPhoneNumber: responseData.phone
               })
               //console.log('checkig state',this.state.adminPhoneNumber)
           })
