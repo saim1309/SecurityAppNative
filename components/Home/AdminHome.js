@@ -60,7 +60,7 @@ export default class AdminHome extends Component {
                                     style={styles.image}
                                     source={require('../../assets/createSchedule.jpg')}
                                 />
-                                <Text style={styles.iconTitle}>Create Schedules</Text>
+                                <Text style={styles.iconTitle}>Schedule</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
