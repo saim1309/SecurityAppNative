@@ -16,7 +16,7 @@ import RegisterUser from './components/Admin/RegisterUser';
 import SecurityRecords from './components/Admin/SecurityRecords.js';
 import Schedule from './components/Admin/Schedule';
 import UpdateUser from './components/Admin/UpdateUser'
-import GuardDetails from './components/Admin/GuardDetails'
+
 import GuardSchedule from './components/Guard/GuardSchedule'
 import ViewScheduleAdmin from './components/Admin/ViewScheduleAdmin'
 
