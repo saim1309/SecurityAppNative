@@ -65,7 +65,7 @@ export default class Panic extends React.Component{
     return(
       <View style={styles.container}>
         <Text style = {styles.buttonText}>Hello {user_name}</Text>    
-        <Text style = {styles.buttonText}>What do  want to do???</Text>
+        <Text style = {styles.buttonText}>What do you want to do???</Text>
         <View style = {styles.imageButtonContainer}>
           <TouchableOpacity onPress={() => SendSMS.send({
             body: 'EMERGENCY!',
