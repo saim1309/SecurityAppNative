@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, Navigator, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Navigator, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ViewReports from './ViewReports';
 import ViewClockInOut from './ViewClockInOut';
@@ -13,33 +13,34 @@ const Tab = createBottomTabNavigator();
 function SecurityRecords() {
   return (
     <Tab.Navigator>
-      <Tab.Screen 
-        name="View Reports" 
-        component={ViewReports}
-        options={{ 
-        tabBarIcon: ({tintColor}) => (
-          <Icons name='book' size={25} />
-        )
-        }}  
-      />
-      <Tab.Screen 
-        name="View Clock In/Out" 
-        component={ViewClockInOut}
-        options={{ 
-        tabBarIcon: ({tintColor}) => (
-          <Icon name='ios-time' size={25} />
-        )
-        }}  
-      />
-      <Tab.Screen 
-        name="Guard Details" 
+      <Tab.Screen
+        name="Guard Details"
         component={GuardDetails}
-        options={{ 
-        tabBarIcon: ({tintColor}) => (
-          <Icons name='account-details' size={25} />
-        )
-        }}  
+        options={{
+          tabBarIcon: ({ tintColor }) => (
+            <Icons name='account-details' size={25} />
+          )
+        }}
       />
+      <Tab.Screen
+        name="View Reports"
+        component={ViewReports}
+        options={{
+          tabBarIcon: ({ tintColor }) => (
+            <Icons name='book' size={25} />
+          )
+        }}
+      />
+      <Tab.Screen
+        name="View Clock In/Out"
+        component={ViewClockInOut}
+        options={{
+          tabBarIcon: ({ tintColor }) => (
+            <Icon name='ios-time' size={25} />
+          )
+        }}
+      />
+
     </Tab.Navigator>
   );
 }

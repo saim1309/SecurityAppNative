@@ -4,24 +4,51 @@ import {
   Text,
   View,
   FlatList,
-  Image,
+  Dimensions,
   ActivityIndicator,
 } from 'react-native';
-import {Card, CardItem} from 'native-base';
+import { Dropdown } from 'react-native-material-dropdown';
+import {Card, CardItem, Button} from 'native-base';
+
+const { width: Width } = Dimensions.get('window');
 
 export default class ViewReports extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true,
+      isLoading: false,
       dataSource: [],
-      noShift: false,
+      siteNames: [],
+      selectedSiteName:"",
+      noReport: false,
     };
   }
 
-  getUserApi = () => {
+  getSiteNmaesApi = () =>{
+    /**fetching site names */
+    fetch(global.hostUrl + '/sites/', {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        //console.log(responseData)
+        var data = responseData.map(function (item) {
+          return {
+            value: item.site_name,
+          };
+        });
+        console.log(data);
+
+        this.setState({ siteNames: data });
+      })
+      .catch((error) => console.log('Error : ', error));
+  }
+
+  getReportsApi = () => {
     return (
-      /** Fetching Guard Names */
+      /** Fetching Reports */
+      this.setState({isLoading:true, dataSource:[]}),
+      console.log('selected site:',this.state.selectedSiteName),
       fetch(global.hostUrl + '/reports/viewReport', {
         method: 'POST',
         headers: {
@@ -29,7 +56,7 @@ export default class ViewReports extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          site_name: 'Costco',
+          site_name: this.state.selectedSiteName,
         }),
       })
         .then((response) => response.json())
@@ -40,8 +67,8 @@ export default class ViewReports extends React.Component {
             dataSource: this.state.dataSource.concat(responseData),
           });
           if (responseData.length == 0) {
-            console.log('Inside If');
-            this.setState({noShift: true});
+            console.log('no data fetched by API');
+            this.setState({noReport: true});
           }
         })
         .catch((error) => console.log('Error : ', error))
@@ -50,7 +77,7 @@ export default class ViewReports extends React.Component {
   _keyExtractor = (datasource, index) => datasource._id;
 
   componentDidMount() {
-    this.getUserApi();
+    this.getSiteNmaesApi();
   }
 
   render() {
@@ -62,16 +89,17 @@ export default class ViewReports extends React.Component {
         </View>
       );
     }
+    
     //if all data is loaded up from api then data will be displayed
-    if (this.state.noShift) {
+    if (this.state.noReport) {
       return (
         <View style={styles.container}>
-          <Text style={styles.NoShift}>You have not created any Shifts</Text>
+          <Text style={styles.noReport}>No Report available for this site</Text>
         </View>
       );
     } else {
       return (
-        <View>
+        <View style={styles.container}>
           <Dropdown
             style= {styles.dropdown}
             dropdownOffset={{ top: 10, left: 20 }}
@@ -84,13 +112,15 @@ export default class ViewReports extends React.Component {
               height: 50,
               paddingRight: 10,
               backgroundColor:'#008CBA',
-              marginBottom: 20,
-              paddingLeft:100
+              margin: 20,
+              paddingLeft:10
               
             }}
             rippleCentered={true}
             placeholder='Select Site'
-            placeholderTextColor='#fff'
+            placeholderTextColor='#ffffff'
+            //textColor = '#fff'
+            //backgroundColor = '#0ABDE3'
             inputContainerStyle={{ borderBottomColor: 'transparent' }}
             data={this.state.siteNames}
             valueExtractor={({ value }) => value}
@@ -98,6 +128,9 @@ export default class ViewReports extends React.Component {
               this.setState({ selectedSiteName: value });
             }}
           />
+          <Button success style = {styles.fetchReportBtn} onPress={this.getReportsApi.bind(this)}>
+            <Text style = {styles.fetchReportTxt}> Fetch Report </Text>
+          </Button>
           <FlatList
             data={this.state.dataSource}
             keyExtractor={this._keyExtractor}
@@ -129,6 +162,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  fetchReportBtn:{
+    alignSelf: "center",
+    marginHorizontal: 30,
+    paddingHorizontal: 20
+  },
+  fetchReportTxt:{
+    color:"#fff",
+    fontWeight:"bold",
+    fontSize:18 
+  },
   progress: {
     flex: 1,
     justifyContent: 'center',
@@ -137,7 +180,7 @@ const styles = StyleSheet.create({
   userInfo: {
     color: '#DAE0E2',
   },
-  NoShift: {
+  noReport: {
     flex: 1,
     fontSize: 24,
     position: 'absolute',

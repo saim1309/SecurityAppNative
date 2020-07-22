@@ -75,7 +75,7 @@ export default class WriteReports extends Component {
       borderRadius:5,
       alignSelf:"center",
       marginRight:10,
-      width:70,
+      width:100,
     }
 
   });
