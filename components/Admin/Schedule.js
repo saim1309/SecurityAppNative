@@ -12,6 +12,9 @@ export default class Schedule extends React.Component {
           <TouchableOpacity style = {styles.Button} onPress={() => {this.props.navigation.navigate('ViewScheduleAdmin')}}>
             <Text style={styles.text}>View Schedule</Text>
           </TouchableOpacity>
+          <TouchableOpacity style = {styles.Button} onPress={() => {this.props.navigation.navigate('AddSite')}}>
+            <Text style={styles.text}>Add Site</Text> 
+          </TouchableOpacity>
         </View>
       );
     }  
