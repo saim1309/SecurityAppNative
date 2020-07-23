@@ -16,7 +16,7 @@ import RegisterUser from './components/Admin/RegisterUser';
 import SecurityRecords from './components/Admin/SecurityRecords.js';
 import Schedule from './components/Admin/Schedule';
 import UpdateUser from './components/Admin/UpdateUser'
-
+import AddSite from './components/Admin/AddSite'
 import GuardSchedule from './components/Guard/GuardSchedule'
 import ViewScheduleAdmin from './components/Admin/ViewScheduleAdmin'
 
@@ -46,8 +46,7 @@ function App() {
         <Stack.Screen name="SecurityRecords" options={{ title: 'Security Records'}} component={SecurityRecords}/>
         <Stack.Screen name="Schedule" options={{ title: 'Schedule Page'}} component={Schedule}/>
         <Stack.Screen name="ViewScheduleAdmin" options={{ title: 'View Schedule Page'}} component={ViewScheduleAdmin}/>
-        
-        
+        <Stack.Screen name="AddSite" options={{ title: 'Add New Site'}} component={AddSite}/>
         <Stack.Screen name="UpdateUser" options={{ title: 'Update Guard Record'}} component={UpdateUser}/>
         
         <Stack.Screen name="ClockInOut" options={{ title: 'Enter Your Time'}} component={ClockInOut} />
