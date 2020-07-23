@@ -20,7 +20,9 @@ export default class ViewReports extends React.Component {
       dataSource: [],
       siteNames: [],
       selectedSiteName:"",
+      fetchReportButtonClicked:false,
       noReport: false,
+      
     };
   }
 
@@ -63,6 +65,7 @@ export default class ViewReports extends React.Component {
         .then((responseData) => {
           console.log(responseData);
           this.setState({
+            fetchReportButtonClicked:true,
             isLoading: false,
             dataSource: this.state.dataSource.concat(responseData),
          });
@@ -89,10 +92,16 @@ export default class ViewReports extends React.Component {
         </View>
       );
     }
-    else{
+    else if(this.state.fetchReportButtonClicked==true){
       return (
         <View style={styles.container}>
           <Text style={styles.noReport}>No Reports for this site</Text>
+        </View>
+      );
+    }
+    else{
+      return (
+        <View style={styles.container}>
         </View>
       );
     }
