@@ -24,7 +24,7 @@ export default class ViewReports extends React.Component {
     };
   }
 
-  getSiteNmaesApi = () =>{
+  getSiteNamesApi = () =>{
     /**fetching site names */
     fetch(global.hostUrl + '/sites/', {
       method: 'GET',
@@ -65,19 +65,37 @@ export default class ViewReports extends React.Component {
           this.setState({
             isLoading: false,
             dataSource: this.state.dataSource.concat(responseData),
-          });
+         });
           if (responseData.length == 0) {
             console.log('no data fetched by API');
             this.setState({noReport: true});
           }
         })
+        
         .catch((error) => console.log('Error : ', error))
     );
   };
   _keyExtractor = (datasource, index) => datasource._id;
 
   componentDidMount() {
-    this.getSiteNmaesApi();
+    this.getSiteNamesApi();
+  }
+
+  ListEmpty=()=>{
+    if(this.state.selectedSiteName==""){
+      return (
+        <View style={styles.container}>
+          <Text style={styles.noReport}>Select a site to view report</Text>
+        </View>
+      );
+    }
+    else{
+      return (
+        <View style={styles.container}>
+          <Text style={styles.noReport}>No Reports for this site</Text>
+        </View>
+      );
+    }
   }
 
   render() {
@@ -91,13 +109,7 @@ export default class ViewReports extends React.Component {
     }
     
     //if all data is loaded up from api then data will be displayed
-    if (this.state.noReport) {
-      return (
-        <View style={styles.container}>
-          <Text style={styles.noReport}>No Report available for this site</Text>
-        </View>
-      );
-    } else {
+     else {
       return (
         <View style={styles.container}>
           <Dropdown
@@ -118,17 +130,18 @@ export default class ViewReports extends React.Component {
             }}
             rippleCentered={true}
             placeholder='Select Site'
-            placeholderTextColor='#ffffff'
-            //textColor = '#fff'
+            placeholderTextColor='#fff'
+            style = {{color: '#fff'}} //for changed text color
             //backgroundColor = '#0ABDE3'
             inputContainerStyle={{ borderBottomColor: 'transparent' }}
             data={this.state.siteNames}
             valueExtractor={({ value }) => value}
+            defaultValue={this.state.selectedSiteName}
             onChangeText={(value) => {
               this.setState({ selectedSiteName: value });
             }}
           />
-          <Button success style = {styles.fetchReportBtn} onPress={this.getReportsApi.bind(this)}>
+          <Button success style = {styles.fetchReportBtn} onPress={this.getReportsApi}>
             <Text style = {styles.fetchReportTxt}> Fetch Report </Text>
           </Button>
           <FlatList
@@ -138,16 +151,17 @@ export default class ViewReports extends React.Component {
               <Card>
                 <CardItem style={styles.eachItem}>
                   <View style={styles.userInfo}>
-                    <Text style={styles.textStyles}>Site Name:      {item.site_name}</Text>
-                    <Text style={styles.textStyles}>Shift Timing:   {item.shift_slot}</Text>
-                    <Text style={styles.textStyles}>Shift Date:       {item.shift_date}</Text>
-                    <Text style={styles.textStyles}>Guard Name:   {item.guard_name}</Text>
-                    <Text style={styles.textStyles}>Report Subject:   {item.report_subject}</Text>
-                    <Text style={styles.textStyles}>Report Description:   {item.report_description}</Text>
+                    <Text style={styles.textStyles}>Site Name:              {item.site_name}</Text>
+                    <Text style={styles.textStyles}>Shift Timing:           {item.shift_slot}</Text>
+                    <Text style={styles.textStyles} >Shift Date:               {item.shift_date}</Text>
+                    <Text style={styles.textStyles}>Guard Name:           {item.guard_name}</Text>
+                    <Text style={styles.textStyles}>Report Subject:       {item.report_subject}</Text>
+                    <Text style={styles.textStyles}>Report Description: {item.report_description}</Text>
                   </View>
                 </CardItem>
               </Card>
             )}
+            ListEmptyComponent={this.ListEmpty}
           />
         </View>
       );
@@ -183,7 +197,7 @@ const styles = StyleSheet.create({
   noReport: {
     flex: 1,
     fontSize: 24,
-    position: 'absolute',
+    marginTop:150,
     marginLeft: 40,
     fontFamily: 'Times New Roman',
   },
