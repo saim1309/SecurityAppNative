@@ -69,7 +69,6 @@ export default class GuardDetails extends Component {
                         <Card>
                             <CardItem style={styles.eachItem} >
                                 <View style={styles.userInfo}>
-                                    <Text style={styles.textStyles}>ID:                     {item._id}</Text>
                                     <Text style={styles.textStyles}>First Name:     {item.first_name}</Text>
                                     <Text style={styles.textStyles}>Last Name:      {item.last_name}</Text>
                                     <Text style={styles.textStyles}>Email:                {item.email}</Text>
