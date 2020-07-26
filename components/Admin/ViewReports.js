@@ -160,6 +160,7 @@ export default class ViewReports extends React.Component {
               <Card>
                 <CardItem style={styles.eachItem}>
                   <View style={styles.userInfo}>
+                    <Text style={styles.textStyles}>ID:                        {item.Id}</Text>  
                     <Text style={styles.textStyles}>Site Name:              {item.site_name}</Text>
                     <Text style={styles.textStyles}>Shift Timing:           {item.shift_slot}</Text>
                     <Text style={styles.textStyles} >Shift Date:               {item.shift_date}</Text>
@@ -220,5 +221,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Arial',
     fontWeight: 'bold',
     color: '#616C6F',
+    
   },
 });

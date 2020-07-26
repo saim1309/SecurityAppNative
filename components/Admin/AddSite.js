@@ -99,7 +99,7 @@ export default class AddSite extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#74B9FF',
+        backgroundColor: '#DAE0E2',
         paddingLeft: 60,
         paddingRight: 60,
         justifyContent: 'center',
@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#fff',
         borderBottomWidth: 1,
         marginBottom: 20,
+        borderBottomColor:'black'
     },
     addButton: {
         backgroundColor: "#1769aa",

@@ -18,7 +18,7 @@ function SecurityRecords() {
         component={GuardDetails}
         options={{
           tabBarIcon: ({ tintColor }) => (
-            <Icons name='account-details' size={25} />
+            <Icons name='account-details' size={30} />
           )
         }}
       />
@@ -27,16 +27,7 @@ function SecurityRecords() {
         component={ViewReports}
         options={{
           tabBarIcon: ({ tintColor }) => (
-            <Icons name='book' size={25} />
-          )
-        }}
-      />
-      <Tab.Screen
-        name="View Clock In/Out"
-        component={ViewClockInOut}
-        options={{
-          tabBarIcon: ({ tintColor }) => (
-            <Icon name='ios-time' size={25} />
+            <Icons name='book' size={30} />
           )
         }}
       />

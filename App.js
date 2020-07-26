@@ -52,8 +52,8 @@ function App() {
         <Stack.Screen name="ClockInOut" options={{ title: 'Enter Your Time'}} component={ClockInOut} />
         <Stack.Screen name="GuardSchedule" options={{ title: ' Guard Schedule'}} component={GuardSchedule}/>
         <Stack.Screen name="Panic" component={Panic} />
-        <Stack.Screen name="WriteReport" component={WriteReport} />
-        <Stack.Screen name="CreateSchedule" component={CreateSchedule} />
+        <Stack.Screen name="WriteReport" options={{ title: 'Write Report'}} component={WriteReport} />
+        <Stack.Screen name="CreateSchedule" options={{ title: 'Create Schedule'}} component={CreateSchedule} />
       </Stack.Navigator>
     </NavigationContainer>
   );  
