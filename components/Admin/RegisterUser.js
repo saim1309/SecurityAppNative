@@ -71,7 +71,7 @@ export default class RegisterUser extends React.Component {
       let regPhone = /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/;
 
       if (this.state.newFirstName == "" || this.state.newLastName == "" || this.state.newEmail == "" || this.state.newPassword == "" || this.state.newConfirmPassword == "" || this.state.newPhoneNumber == "") {
-        alert('all fields are mandatory');
+        alert('Please completely fill out the form to register a guard');
       }
       else if(this.state.newFirstName.length<2 || this.state.newLastName.length<2){
         alert('Minimum 2 characters for both first and last name');

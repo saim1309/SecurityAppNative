@@ -18,6 +18,7 @@ export default class CreateSchedule extends React.Component {
       siteNames: [],
       guardData:{},
       selectedGuardId:'',
+      guardNames:[]
     };
   }
 
@@ -38,6 +39,7 @@ export default class CreateSchedule extends React.Component {
         console.log(data);
 
         this.setState({ siteNames: data });
+        console.log("site names : "+this.state.siteNames)
       })
       .catch((error) => console.log('Error : ', error));
 
@@ -49,13 +51,15 @@ export default class CreateSchedule extends React.Component {
       .then((responseData) => {
         this.setState({guardData:responseData})
         console.log('guardData',this.state.guardData)
-        var data = responseData.map(function (item) {
+        var data = [...new Set(responseData.map(q => q.first_name+' '+q.last_name))];
+        
+        var data1 = data.map(function (item) {
           return {
-            value: item.first_name + ' ' + item.last_name,
+            value: item,
           };
-        });
-        this.setState({ guardNames: data });
-        console.log('gaurdName', this.state.guardNames)
+        });  
+        this.setState({ guardNames: data1 });
+        console.log('guardName  : ', this.state.guardNames)
       })
       .catch((error) => console.log('Error : ', error));
   }
@@ -85,7 +89,7 @@ export default class CreateSchedule extends React.Component {
       this.state.selectedShiftTiming == ''||
       this.state.selectedGuardId == ''
     ) {
-      alert('All fields are necessary');
+      alert('Please completely fill out the form to create schedule.');
     } else if (this.state.selectedDate < currentDate) {
       alert('selected date cannot be in the past');
     } else {
@@ -204,7 +208,7 @@ export default class CreateSchedule extends React.Component {
               height: 50,
               paddingRight: 10,
               marginBottom: 20,
-              paddingLeft:20
+              paddingLeft:20,
             }}
             rippleCentered={true}
             inputContainerStyle={{ borderBottomColor: 'transparent' }}
@@ -214,6 +218,7 @@ export default class CreateSchedule extends React.Component {
             this.setState({selectedGuardName: value});
             this.guardIdDropDown.setState({ value: '' });
             this.state.selectedGuardId=''
+            console.log("selected guard name : "+this.state.selectedGuardName)
             this.getCorrespondingId(this.state.selectedGuardName)
             }}
           />

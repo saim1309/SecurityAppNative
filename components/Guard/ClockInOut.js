@@ -52,7 +52,6 @@ export default class ClockInOut extends Component {
       //sending date and site name as parameter to api
       body: JSON.stringify({
         date:moment().format('yyyy-MM-DD'),
-        site_name:this.state.selectedSiteName
       })
     }) 
     //collecting back response from api and converting in text
@@ -97,34 +96,6 @@ export default class ClockInOut extends Component {
     const age = params.age;
     return (
       <View style={styles.container}>
-        <View>
-          <Dropdown
-            style= {styles.dropdown}
-            dropdownOffset={{ top: 10, left: 20 }}
-            dropdownMargins={{ min: 10, max: 50 }}
-            containerStyle={{
-              borderWidth: 2,
-              borderColor: 'black',
-              borderRadius: 5,
-              width: Width * 0.9,
-              height: 50,
-              paddingRight: 10,
-              backgroundColor:'#008CBA',
-              marginBottom: 20,
-              paddingLeft:100
-              
-            }}
-            rippleCentered={true}
-            placeholder='Select Site'
-            placeholderTextColor='#fff'
-            inputContainerStyle={{ borderBottomColor: 'transparent' }}
-            data={this.state.siteNames}
-            valueExtractor={({ value }) => value}
-            onChangeText={(value) => {
-              this.setState({ selectedSiteName: value });
-            }}
-          />
-        </View>
         <TouchableOpacity style = {styles.Button} onPress={()=>{this.clockIn()}}>
           <Text style={styles.text}>Clock In</Text>
           </TouchableOpacity>
