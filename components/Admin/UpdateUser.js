@@ -50,6 +50,7 @@ export default class UpdateUser extends React.Component {
       .catch((error) => console.log('Error : ', error));
   }
 
+
   getCorrespondingId=async(guardName)=>{
     console.log("In corresponding ID")
     await fetch(global.hostUrl+"/users/getId", {
@@ -101,6 +102,7 @@ export default class UpdateUser extends React.Component {
        console.log(responseData)
        console.log("After setting the state")
        alert(responseData)
+       this.componentDidMount();
     })
     .catch(error => console.log("Error : ",error))
   }
