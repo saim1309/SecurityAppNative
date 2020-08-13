@@ -101,6 +101,7 @@ export default class UpdateUser extends React.Component {
        console.log(responseData)
        console.log("After setting the state")
        alert(responseData)
+       this.componentDidMount();
     })
     .catch(error => console.log("Error : ",error))
   }
@@ -143,12 +144,12 @@ export default class UpdateUser extends React.Component {
       this.state.selectedGuardName==''||
       this.state.selectedGuardId==''
     ) {
-      alert('Please completely fill out the form to update record');
+      alert('Please completely fill out the form to update the record.');
     } else if (reg.test(this.state.newEmail) === false) {
-      alert('Email is invalid');
+      alert('Please enter the valid email address.');
      } else if(regPhone.test(this.state.newPhone) === false){
         console.log(this.state.newPhone)
-        alert('Phone number invalid')
+        alert('Please enter the valid phone number.')
     } else {
       this.updateRecords();
     }

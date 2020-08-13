@@ -36,7 +36,7 @@ export default class AdminHome extends Component {
                             <TouchableOpacity onPress={() => { this.props.navigation.navigate('RegisterUser', { username: user_name, age: 16 }) }}>
                                 <Image
                                     style={styles.image}
-                                    source={require('../../assets/registerUser.png')}
+                                    source={require('../../assets/registerUser1.png')}
                                 />
                                 <Text style={styles.iconTitle}>Register User</Text>
                             </TouchableOpacity>
@@ -46,9 +46,9 @@ export default class AdminHome extends Component {
                                 <Image
                                     style={styles.image}
                                     source={require('../../assets/updateRecords1.jpg')}
-                                    resizeMode= "stretch"
+                                    //resizeMode= "stretch"
                                 />
-                                <Text style={styles.iconTitle}>Update Records</Text>
+                                <Text style={styles.iconTitle}>Update User</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -117,24 +117,25 @@ const styles = StyleSheet.create({
     },
     rowContainer: {
         flexDirection: "row",
-        marginTop:40,
+        marginTop:60,
+        
     },
     image: {
         width: 150,
         height: 150,
-       // borderWidth:2,
-        //borderColor:'#000',
+       borderWidth:1,
+        borderColor:'#99AAAB',
         borderRadius:10,
     },
     LeftItem:{
         marginLeft:0,
     },
     RightItem:{
-        marginLeft:40,
+        marginLeft:50,
     },
     bottomRowContainer:{
         flexDirection: "row",
-        marginTop:100,
+        marginTop:200,
         marginBottom:0,
         alignSelf:'center'
     },

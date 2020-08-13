@@ -55,7 +55,7 @@ export default class AddSite extends React.Component {
         console.log("Address: ", this.state.newSiteAddress);
         console.log("Response: ", this.state.response);
         if (this.state.newSiteName == "" || this.state.newSiteAddress == "") {
-            alert('Please completely fill out the fields to add a site');
+            alert('Please completely fill out the fields to add a site.');
         }
         else {
             

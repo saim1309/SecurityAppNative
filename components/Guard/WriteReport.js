@@ -18,7 +18,7 @@ export default class WriteReports extends Component {
 
   SubmitPressed=async()=>{
     if(this.state.subject=='' || this.state.description==''){
-      alert('Subject or description cannot be empty');
+      alert('Please completely fill out the form to submit the report.');
     }
     else{
       this.setState({isLoading:true})

@@ -64,11 +64,10 @@ export default class Panic extends React.Component{
     const user_name = params.username
     return(
       <View style={styles.container}>
-        <Text style = {styles.buttonText}>Hello {user_name}</Text>    
-        <Text style = {styles.buttonText}>What do you want to do???</Text>
+        <Text style = {styles.buttonText}>Please select a method of contact to active the panic action</Text>
         <View style = {styles.imageButtonContainer}>
           <TouchableOpacity onPress={() => SendSMS.send({
-            body: 'EMERGENCY!',
+            body: 'SMS EMERGENCY ALERT! Kindly contact as soon as possible.',
             recipients: [this.state.adminPhoneNumber],
             successTypes: ['sent', 'queued'],
             allowAndroidSendWithoutReadPermission: true
@@ -89,12 +88,12 @@ export default class Panic extends React.Component{
             />
             <Text style = {styles.buttonText}>CALL</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => Communications.email([this.state.adminEmails],null,null,"EMERGENCY ALERT!!!","Thers is an emergency..please contact")}>
+          <TouchableOpacity onPress={() => Communications.email([this.state.adminEmails],null,null,"EMAIL EMERGENCY ALERT!!!","There is an emergency. Please contact")}>
             <Image
                 style={styles.image}
                 source={require('../../assets/email1.png')}
             />
-            <Text style = {styles.buttonText}>MAIL</Text>
+            <Text style = {styles.buttonText}>EMAIL</Text>
           </TouchableOpacity>
         </View>
         
@@ -128,6 +127,7 @@ buttonText:{
   color:"#192A56",
   fontWeight:"bold",
   fontSize:20,
+  marginHorizontal:20,
   fontFamily:"sans-serif-condensed"
 }
 })

@@ -68,9 +68,9 @@ import {Button} from 'native-base';
                             <TouchableOpacity onPress={() => { this.props.navigation.navigate('ClockInOut', { username: user_name, age: 16 }) } }>
                                 <Image
                                     style={styles.image}
-                                    source={require('../../assets/timeClock.png')}
+                                    source={require('../../assets/timeClock.jpg')}
                                 />
-                                <Text style={styles.iconTitle}>Time Clock</Text>
+                                <Text style={styles.iconTitle}>Clock In/Out</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
@@ -90,7 +90,7 @@ import {Button} from 'native-base';
                                     style={styles.image}
                                     source={require('../../assets/panic.png')}
                                 />
-                                <Text style={styles.iconTitle}>Panic Button</Text>
+                                <Text style={styles.iconTitle}>Panic Action</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.RightItem}>
@@ -151,8 +151,8 @@ const styles = StyleSheet.create({
     image: {
         width: 150,
         height: 150,
-       // borderWidth:2,
-       // borderColor:'#000',
+        borderWidth:1,
+        borderColor:'#99AAAB',
         borderRadius:10,
     },
     LeftItem:{
