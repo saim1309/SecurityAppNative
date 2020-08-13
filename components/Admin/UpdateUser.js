@@ -50,6 +50,7 @@ export default class UpdateUser extends React.Component {
       .catch((error) => console.log('Error : ', error));
   }
 
+
   getCorrespondingId=async(guardName)=>{
     console.log("In corresponding ID")
     await fetch(global.hostUrl+"/users/getId", {
