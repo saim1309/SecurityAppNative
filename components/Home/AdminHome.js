@@ -9,6 +9,8 @@ export default class AdminHome extends Component {
             responseData:'',        
         };
     }
+
+    /**User logout api called */
     UserLogout=async()=>{
         await fetch(global.hostUrl+"/users/logout", {
              method: "DELETE"
@@ -21,6 +23,7 @@ export default class AdminHome extends Component {
            .catch(error => console.log("Error : ",error))
            this.props.navigation.navigate('Login')
     }
+    /**Rendering UI elements(Icons) */
     render() {
         const params = this.props.route.params;
         const user_name = params.username
@@ -80,6 +83,8 @@ export default class AdminHome extends Component {
         );
     }
 }
+
+/**Styling */
 const styles = StyleSheet.create({
     container: {
         flex: 1,

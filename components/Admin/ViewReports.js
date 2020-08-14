@@ -26,6 +26,7 @@ export default class ViewReports extends React.Component {
     };
   }
 
+  /**API to fetch the site names for the drop down */
   getSiteNamesApi = () =>{
     /**fetching site names */
     fetch(global.hostUrl + '/sites/', {
@@ -46,6 +47,7 @@ export default class ViewReports extends React.Component {
       .catch((error) => console.log('Error : ', error));
   }
 
+  /**Fetching reports for a selected site */
   getReportsApi = () => {
     return (
       /** Fetching Reports */
@@ -80,10 +82,12 @@ export default class ViewReports extends React.Component {
   };
   _keyExtractor = (datasource, index) => datasource._id;
 
+  /**Calling method to fill the drop down menu for site on component mount */
   componentDidMount() {
     this.getSiteNamesApi();
   }
 
+  /**If there is no site name selected */
   ListEmpty=()=>{
     if(this.state.selectedSiteName==""){
       return (
@@ -92,6 +96,7 @@ export default class ViewReports extends React.Component {
         </View>
       );
     }
+    /**If the api returns no report for a site */
     else if(this.state.fetchReportButtonClicked==true){
       return (
         <View style={styles.container}>
@@ -108,7 +113,7 @@ export default class ViewReports extends React.Component {
   }
 
   render() {
-    //if it takes time to load data from api...it will show loading sign
+    /**if it takes time to load data from api...it will show loading sign*/
     if (this.state.isLoading) {
       return (
         <View style={styles.progress}>
@@ -116,8 +121,8 @@ export default class ViewReports extends React.Component {
         </View>
       );
     }
-    
-    //if all data is loaded up from api then data will be displayed
+  
+    /**if all data is loaded up from api then data will be displayed*/
      else {
       return (
         <View style={styles.container}>
@@ -178,6 +183,8 @@ export default class ViewReports extends React.Component {
     }
   }
 }
+
+/**Styling */
 
 const styles = StyleSheet.create({
   container: {

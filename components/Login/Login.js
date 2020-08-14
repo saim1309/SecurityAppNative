@@ -27,9 +27,13 @@ export default class Login extends Component {
             errorMessage:"Wrong email or password"
         };
     }
+
+    /**Making the loading boolean false when component is mounted */
     componentDidMount(){
         this.setState({isLoading:false})
     }
+
+    /**Calling api for user authentication */
       userAuthentication=async(username,password)=>{
             console.log('*************in userAuthentication fn***********************')
             console.log("Usename : "+username)
@@ -60,6 +64,8 @@ export default class Login extends Component {
                this.setState({isLoading:false})
         })
     }
+
+    /**Visibility toggle to show password */
     showPass = () =>{
         if(this.state.press === false){
             this.setState({showPass:false, press:true})
@@ -68,6 +74,8 @@ export default class Login extends Component {
             this.setState({showPass:true, press:false})
         }
     }
+
+    /**Front-end validations for login credentials and if successful call api for user authentication*/
      validation=async() =>{
         const{
             username,password
@@ -92,6 +100,7 @@ export default class Login extends Component {
         }
     }
 
+    /**Clear the field after login */
     clearFields = (emailInput,passwordInput) =>{
         this.refs[emailInput].setNativeProps({text: ''});
         this.refs[passwordInput].setNativeProps({text: ''});
@@ -99,6 +108,7 @@ export default class Login extends Component {
         this.state.password=''
       }
 
+    /**Navigate to home page if validation is successful */
     navigateToHome=async(emailInput,passwordInput)=>{
         this.setState({isLoading:true})
         console.log("in navigateToHome...will go in validation fn");
@@ -109,6 +119,8 @@ export default class Login extends Component {
             this.clearFields('emailInput','passwordInput')
         }
     }
+
+    /**Rendering ui elements */
     render(){
         if(this.state.isLoading){
             return(
@@ -185,6 +197,8 @@ export default class Login extends Component {
 );
 }      
 }
+
+/**Styling */
 const styles = StyleSheet.create({
     backgroundContainer: {
       flex: 1,

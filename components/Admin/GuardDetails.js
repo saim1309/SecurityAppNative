@@ -14,11 +14,12 @@ export default class GuardDetails extends Component {
         }
     }
     
+    /**Calling the function on component mount */
     componentDidMount(){
         this.getGuardDetails();
     }
 
-
+    /**Function to fetch all the details of the guard using api */
     getGuardDetails = ()=>{
         console.log('inside  guard details api');
         return (

@@ -7,9 +7,10 @@ import GuardDetails from './GuardDetails'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-
+/**For bottom navigator */
 const Tab = createBottomTabNavigator();
 
+/**Function to render elements to the screen */
 function SecurityRecords() {
   return (
     <Tab.Navigator>

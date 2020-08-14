@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import { Button, View, Text,TouchableOpacity, StyleSheet, Image,Alert,BackHandler } from 'react-native';
 import SendSMS from 'react-native-sms'
 import Communications from 'react-native-communications';
-//import { color } from 'react-native-reanimated';
 
 export default class Panic extends React.Component{
 
@@ -14,6 +13,7 @@ export default class Panic extends React.Component{
     }
 }
 
+/**Fetch email id and phone number of admin on component mount */
   componentDidMount(){
     this.getAdminPhoneNumber();
     this.getAdminEmail();
@@ -22,7 +22,7 @@ export default class Panic extends React.Component{
   getAdminEmail = ()=>{
     console.log('inside  phone number api');
     return (
-      /** Fetching Admin Phone No */
+      /** Fetching Admin Email */
       fetch(global.hostUrl + '/users/email', {
           method: 'POST',
       })
@@ -31,7 +31,6 @@ export default class Panic extends React.Component{
               console.log(responseData)
               
               this.setState({
-                //adminEmails: this.state.adminEmails.concat(responseData)
                 adminEmails: responseData.email
               })
               console.log('checking email state',this.state.adminEmails)
@@ -53,12 +52,12 @@ export default class Panic extends React.Component{
               this.setState({
                 adminPhoneNumber: responseData.phone
               })
-              //console.log('checkig state',this.state.adminPhoneNumber)
           })
           .catch((error) => console.log('Error : ', error))
   )
   }
 
+  /**Rendering of ui elements */
   render(){
     const params = this.props.route.params;
     const user_name = params.username
@@ -101,6 +100,8 @@ export default class Panic extends React.Component{
     ); 
   }
 }
+
+/**Styling */
 
 const styles = StyleSheet.create({
   container: {

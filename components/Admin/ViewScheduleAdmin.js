@@ -14,9 +14,9 @@ export default class ViewScheduleAdmin extends React.Component {
         }
     }
 
+    /** Fetching all the schedule for the guards*/
     getUserApi = () => {
         return (
-            /** Fetching Guard Names */
             fetch(global.hostUrl + '/shifts/viewAll', {
                 method: 'GET',
             })
@@ -37,12 +37,13 @@ export default class ViewScheduleAdmin extends React.Component {
     }   
     _keyExtractor = (datasource, index) => datasource._id;
 
+    /*Calling a function to fetch the schedule on component mount */
     componentDidMount() {
         this.getUserApi();
     }
 
     render() {
-        //if it takes time to load data from api...it will show loading sign 
+        /**if it takes time to load data from api...it will show loading sign */
         if (this.state.isLoading) {
             return (
                 <View style={styles.progress}>
@@ -50,7 +51,7 @@ export default class ViewScheduleAdmin extends React.Component {
                 </View>
             );
         }
-        //if all data is loaded up from api then data will be displayed
+        /**if all data is loaded up from api then data will be displayed*/
         if(this.state.noShift){
             return(
                 <View style={styles.container}>
@@ -85,6 +86,7 @@ export default class ViewScheduleAdmin extends React.Component {
     }
 }
 
+/**Styling */
 const styles = StyleSheet.create({
     container: {
         flex: 1,

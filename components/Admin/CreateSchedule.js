@@ -23,6 +23,7 @@ export default class CreateSchedule extends React.Component {
   }
 
 
+  /***Component did mount should load site names, all the available guards */
   componentDidMount() {
     /**fetching site names */
     fetch(global.hostUrl + '/sites/', {
@@ -63,6 +64,7 @@ export default class CreateSchedule extends React.Component {
       })
       .catch((error) => console.log('Error : ', error));
   }
+
 /** Field validation after user clicks on schedule button */
   fieldValidation = () => {
     /**getting today's date and converting in required format**/
@@ -124,28 +126,23 @@ export default class CreateSchedule extends React.Component {
     }
   };
 
-  resetAllFields=()=>{
-
-  }
-
-  scheduleClicked = () => {
-    
-  };
-
+ /**Date picker */
   handlePicker = (date) => {
     this.setState({ isVisible: false });
     this.setState({ selectedDate: moment(date).format('YYYY-MM-DD') });
     //selectedDate: moment(date).format('MM-DD-YYYY')
   };
-
+ /**To show date picker */
   showDatePicker = () => {
     this.setState({ isVisible: true });
   };
 
+  /**To hide date pickers */
   hideDatePicker = () => {
     this.setState({ isVisible: false });
   };
 
+  /** get the guard id for selected guard name */
   getCorrespondingId=async(guardName)=>{
     console.log("In corresponding ID")
     await fetch(global.hostUrl+"/users/getId", {
@@ -174,9 +171,7 @@ export default class CreateSchedule extends React.Component {
   }
 
   render() {
-    // const params = this.props.route.params;
-    // const user_name = params.username
-
+    /**Shift timings for the dropdown */
     let shiftTime = [
       {
         value: '9:30AM- 9:30PM',
@@ -317,6 +312,7 @@ export default class CreateSchedule extends React.Component {
   }
 }
 
+/**Styling */
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',

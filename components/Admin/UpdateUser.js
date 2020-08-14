@@ -28,6 +28,8 @@ export default class UpdateUser extends React.Component {
       guardDetails:{}
     };
   }
+
+  /**Fetch guard names for the drop down on component did mount */
   componentDidMount() {
     /** Fetching Guard Names */
     fetch(global.hostUrl + '/users/guardNames', {
@@ -50,7 +52,7 @@ export default class UpdateUser extends React.Component {
       .catch((error) => console.log('Error : ', error));
   }
 
-
+ /**Get corresponding guard id when guard name is selected */
   getCorrespondingId=async(guardName)=>{
     console.log("In corresponding ID")
     await fetch(global.hostUrl+"/users/getId", {
@@ -79,8 +81,7 @@ export default class UpdateUser extends React.Component {
   }
 
   
-
-
+  /**Calling api to update the records when update button is clicked */
   updateRecords=async()=>{
     console.log("In fetching guard details")
     await fetch(global.hostUrl+"/users/UpdateUser", {
@@ -108,6 +109,7 @@ export default class UpdateUser extends React.Component {
   }
 
 
+  /**Fetch guard details like name, email and phone number based on the guard id  */
   getGuardDetails=async(guardId)=>{
     console.log("In fetching guard details")
     await fetch(global.hostUrl+"/users/getGuardInfo", {
@@ -133,6 +135,7 @@ export default class UpdateUser extends React.Component {
   }
 
 
+  /**Front-end input validations for the edited details  */
   inputValidation = () => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let regPhone = /^\(?([0-9]{3})\)?[-.●]?\s?([0-9]{3})[-.●]?\s?([0-9]{4})$/;
@@ -156,6 +159,7 @@ export default class UpdateUser extends React.Component {
     }
   };
 
+  /**Rendering UI elements */
   render() {
     return (
       <KeyboardAwareScrollView enableOnAndroid style={styles.container}>
@@ -317,6 +321,8 @@ export default class UpdateUser extends React.Component {
     );
   }
 }
+
+/**Styling */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

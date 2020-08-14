@@ -18,6 +18,7 @@ export default class RegisterUser extends React.Component {
     }
   }
 
+  /**Function to clear all the fields once the register is pressed */
   clearFields = (fname,lname,phoneNumber,email,password,confirmPassword) =>{
       this.refs[fname].setNativeProps({text: ''});
       this.refs[lname].setNativeProps({text: ''});
@@ -33,10 +34,12 @@ export default class RegisterUser extends React.Component {
       this.state.newPhoneNumber=''
   }
 
+  /**Make isloading to false when the component is mounted */
   componentDidMount(){
     this.setState({isLoading:false})
   }
 
+  /**Calling an api to register the guard details */
   UserRegistration=async()=>{
     await fetch(global.hostUrl+"/users/register", {
              method: "POST",
@@ -65,6 +68,7 @@ export default class RegisterUser extends React.Component {
            })
   }
 
+  /**Front-end validation for the input provided by the user */
   inputValidation = async(fname,lname,phoneNumber,email,password,confirmPassword) => {
 
       let regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -100,7 +104,9 @@ export default class RegisterUser extends React.Component {
     }
   }
 
+  /**UI elements  */
   render() {
+    /**show the loading icon when the component is in loading state  */
     if(this.state.isLoading){
       return(
           <View style={styles.ActivityIndicatorContainer}>
@@ -167,6 +173,8 @@ export default class RegisterUser extends React.Component {
     );
   }
 }
+
+/**Styling */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

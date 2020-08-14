@@ -15,6 +15,7 @@ export default class ClockInOut extends Component {
     };
   }
 
+  /**Calling API to update the clock in time */
   clockIn=()=>{
     console.log(new Date().toLocaleDateString('yyyy-MM-dd'))
     fetch(global.hostUrl+"/shifts/clockin", {
@@ -40,55 +41,35 @@ export default class ClockInOut extends Component {
     
   }
 
-  //handling clock out functionality
+  /*handling clock out functionality*/
   clockOut=()=>{
-    //fetch url for clock out api from node
+    /*fetch url for clock out api from node*/
     fetch(global.hostUrl+"/shifts/clockout", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      //sending date and site name as parameter to api
+      /*sending date and site name as parameter to api*/
       body: JSON.stringify({
         date:moment().format('yyyy-MM-DD'),
       })
     }) 
-    //collecting back response from api and converting in text
+    /*collecting back response from api and converting in text*/
     .then((response) => response.text())
     .then((responseData) => {
-       //alerting back the response getting back from api
+       /*alerting back the response getting back from api*/
        alert(responseData)
     })
-    //handling error from api in catch block
+    /*handling error from api in catch block*/
     .catch(error =>{
       console.log("Error : ",error)
       alert(error)
     } )
     
   }
-
-
-
-  componentDidMount() {
-    /**fetching site names */
-    fetch(global.hostUrl + '/sites/', {
-      method: 'GET',
-    })
-      .then((response) => response.json())
-      .then((responseData) => {
-        console.log(responseData)
-        var data = responseData.map(function (item) {
-          return {
-            value: item.site_name,
-          };
-        });
-        console.log(data);
-
-        this.setState({ siteNames: data });
-      })
-      .catch((error) => console.log('Error : ', error));
-    }
+ 
+  /**Rendering of UI elements */
 
   render(){
     const params = this.props.route.params;
@@ -107,6 +88,7 @@ export default class ClockInOut extends Component {
   }
 }
 
+/**Styling */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

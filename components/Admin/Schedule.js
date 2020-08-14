@@ -3,6 +3,7 @@ import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
 import CreateSchedule from './CreateSchedule' 
 
 export default class Schedule extends React.Component {
+  /**Rendering UI elements */
     render(){
       return (
         <View style={styles.container}>
@@ -20,6 +21,7 @@ export default class Schedule extends React.Component {
     }  
 }
 
+/**Styling */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

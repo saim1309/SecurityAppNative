@@ -16,6 +16,7 @@ export default class WriteReports extends Component {
     };
   }
 
+  /**Front end validation and if successful, call api to submit the report */
   SubmitPressed=async()=>{
     if(this.state.subject=='' || this.state.description==''){
       alert('Please completely fill out the form to submit the report.');
@@ -50,6 +51,7 @@ export default class WriteReports extends Component {
     }
     
   }
+  /**Rendering UI elements */
    render(){
     const params = this.props.route.params;
     const user_name = params.username
@@ -100,6 +102,7 @@ export default class WriteReports extends Component {
    }
   }
 
+  /**Styling */
   const styles=StyleSheet.create({
 
     container:{

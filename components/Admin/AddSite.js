@@ -19,6 +19,7 @@ export default class AddSite extends React.Component {
         this.refs[siteAddress].setNativeProps({text: ''});
     }
 
+    /** Updating the site*/
     addNewSite = async() => {
         return (
             /** Fetching Guard Names */
@@ -50,6 +51,7 @@ export default class AddSite extends React.Component {
 
     }
 
+    /**Front-end validation for add site */
     addSiteClicked = async() => {
         console.log("Name: ", this.state.newSiteName);
         console.log("Address: ", this.state.newSiteAddress);
@@ -65,6 +67,7 @@ export default class AddSite extends React.Component {
         }
     }
 
+    /** UI Elements */
     render() {
         if(this.state.isLoading){
             return(
@@ -95,7 +98,7 @@ export default class AddSite extends React.Component {
     }
 }
 
-
+/**Styling */
 const styles = StyleSheet.create({
     container: {
         flex: 1,

@@ -17,6 +17,7 @@ import {Button} from 'native-base';
         console.log("In constructor")
     }
 
+    /**Functionality to show a pop up for confirmation of logout when back button is pressed */
     componentDidMount() {
         console.log("In home")
         this.backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
@@ -24,6 +25,8 @@ import {Button} from 'native-base';
             return true;
         });
     }
+
+    /**For hard press back button */
     componentDidAppear(){
         console.log("In component did appear")
         this.backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
@@ -35,6 +38,8 @@ import {Button} from 'native-base';
         console.log("Home unmount")
         this.backHandler.remove();
     }
+
+    /**User logout api called when logout button is pressed */
     UserLogout=async()=>{
         await fetch(global.hostUrl+"/users/logout", {
              method: "DELETE"
@@ -52,6 +57,7 @@ import {Button} from 'native-base';
         this.props.navigation.navigate(screenName, { username: user_name})
     }
     
+    /**Rendering UI elements  */
     render() {
         const params = this.props.route.params;
         const user_name = params.username
@@ -108,6 +114,8 @@ import {Button} from 'native-base';
         );
     }
 }
+
+/**Styling */
 const styles = StyleSheet.create({
     container: {
         flex: 1,

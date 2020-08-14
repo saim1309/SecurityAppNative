@@ -2,15 +2,12 @@ import * as React from 'react';
 import { Button, View, Text, StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-//import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import CreateSchedule from './components/Admin/CreateSchedule';
 import ClockInOut from './components/Guard/ClockInOut';
 import WriteReport from './components/Guard/WriteReport'
 import Panic from './components/Guard/Panic';
-// import Flash from './components/Flash';
 import AdminHome from './components/Home/AdminHome.js';
 import RegisterUser from './components/Admin/RegisterUser';
 import SecurityRecords from './components/Admin/SecurityRecords.js';
@@ -21,7 +18,6 @@ import GuardSchedule from './components/Guard/GuardSchedule'
 import ViewScheduleAdmin from './components/Admin/ViewScheduleAdmin'
 
 const Stack = createStackNavigator();
-//const Tab = createBottomTabNavigator();
 console.disableYellowBox = true;
 
 
