@@ -90,7 +90,7 @@ describe('empty field tests', () =>{
         })
         
         test('valid date ', () =>{
-            var date = '2020-08-11'
+            var date = '2020-08-28'
             var result = isValidDate(date)
             expect(result).toBeTruthy();
           })
@@ -98,6 +98,7 @@ describe('empty field tests', () =>{
 
 
 
+    
 
       
 
