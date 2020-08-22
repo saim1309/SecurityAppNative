@@ -1,9 +1,8 @@
 import 'react-native';
 import React from 'react';
-//import App from '../App';
-// Note: test renderer must be required after react-native.
+
 import renderer from 'react-test-renderer';
-//import myFunction from '../components/Admin/CreateSchedule'
+
 
 isEmptyFeild=(p1,p2,p3,p4,p5) =>{
   var result = p1 =='' || p2 == '' || p3 == '' || p4 == '' || p5 ==''

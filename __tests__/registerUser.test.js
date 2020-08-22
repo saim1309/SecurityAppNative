@@ -4,10 +4,9 @@
 
 import 'react-native';
 import React from 'react';
-//import App from '../App';
-// Note: test renderer must be required after react-native.
+
 import renderer from 'react-test-renderer';
-//import myFunction from '../components/Admin/CreateSchedule'
+
 
 isEmptyFeild=(fname,lname,phone,email,password,confirmPassword) =>{
   var result = fname =='' || lname == '' || phone == '' || password == '' || confirmPassword ==''
@@ -57,17 +56,7 @@ test('invalid email , all numbers', () =>{
   expect(result).toBeFalsy();
 })
 
-/*test('valid email , space before email address', () =>{
-  var email= (' may@gmail.com')
-  var result = reg.test(email)
-  expect(result).toBeTruthy();
-})*/
 
-/*test('valid email , space after email address', () =>{
-  var email= ('may@gmail.com ')
-  var result = reg.test(email)
-  expect(result).toBeTruthy();
-})*/
 
 test('invalid email , has @ and . but no other characters', () =>{
   var email= ('@.')
@@ -154,20 +143,7 @@ test ('valid phone number, no format, no spacing', () =>{
   expect(result).toBeTruthy(); 
 })
 
-/*
-test ('valid phone number, no format, spacing', () =>{
-  var phoneNumber ='123 156 7890'
-  var result = regPhone.test(phoneNumber)
-  expect(result).toBeTruthy(); 
 
-})
-
-test ('valid phone number, with format, spacing', () =>{
-  var phoneNumber ='(123) 156-7890'
-  var result = regPhone.test(phoneNumber)
-  expect(result).toBeTruthy(); 
-})
-*/
 })
 describe('password and confirm password testing', () =>{
 
@@ -202,13 +178,7 @@ test('password matches confirm password', () => {
   result=doNotmatch(password,confirmPassword)
   expect(result).toBeFalsy();
 })
-/*
-test('password matches confirm password, white space at of the begining of password', () => {
-  var password =' 12345'
-  var confirmPassword ='12345'
-  result=doNotmatch(password,confirmPassword)
-  expect(result).toBeFalsy();
-})*/
+
 })
 
 describe('first name and last name tests', () =>{
